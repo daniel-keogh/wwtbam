@@ -60,13 +60,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9124d913e490c1e4e84439fc3248ca9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActiveBackgroundColor: {r: 1, g: 0.84313726, b: 0.22352941, a: 1}
-  isSafetyTextColor: {r: 0.20392157, g: 0.59607846, b: 0.85882354, a: 1}
+  isActiveBackgroundColor: {r: 0.9764706, g: 0.60784316, b: 0.10980392, a: 1}
+  isSafetyTextColor: {r: 0.43867922, g: 0.7701678, b: 1, a: 1}
   isActiveTextColor: {r: 0, g: 0, b: 0, a: 1}
   isActive: 0
   isSafetyNet: 0
