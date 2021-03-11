@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<grammar xml:lang="en" root="playAction" tag-format="semantics/1.0" version="1.0" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="playAction">
+    <one-of>
+      <item>
+        <ruleref uri="#lifeline" />
+        <tag>out = rules.lifeline;</tag>
+      </item>
+      <item>
+        <ruleref uri="#selectAnswer" />
+        <tag>out = rules.selectAnswer;</tag>
+      </item>
+      <item>
+        <ruleref uri="#confirmAnswer" />
+        <tag>out = rules.confirmAnswer;</tag>
+      </item>
+      <item>
+        <ruleref uri="#quit" />
+        <tag>out = rules.quit;</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="lifeline">
+    Use lifeline
+    <one-of>
+      <item>
+        <ruleref uri="#askAudience" />
+        <tag>out = rules.askAudience;</tag>
+      </item>
+      <item>
+        <ruleref uri="#fiftyFifty" />
+        <tag>out = rules.fiftyFifty;</tag>
+      </item>
+      <item>
+        <ruleref uri="#phoneFriend" />
+        <tag>out = rules.phoneFriend;</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="askAudience">
+    <item>ask the audience</item>
+    <tag>out.lifeline = "ask-audience";</tag>
+  </rule>
+
+  <rule id="fiftyFifty">
+    <item>fifty fifty</item>
+    <tag>out.lifeline = "fifty-fifty";</tag>
+  </rule>
+
+  <rule id="phoneFriend">
+    <item>phone a friend</item>
+    <tag>out.lifeline = "phone-friend";</tag>
+  </rule>
+
+  <rule id="selectAnswer">
+    Choose
+    <one-of>
+      <item>
+        A
+        <tag>out.selected = "A";</tag>
+      </item>
+      <item>
+        B
+        <tag>out.selected = "B";</tag>
+      </item>
+      <item>
+        C
+        <tag>out.selected = "C";</tag>
+      </item>
+      <item>
+        D
+        <tag>out.selected = "D";</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="confirmAnswer">
+    <item>final answer</item>
+    <tag>out.finalAnswer = true;</tag>
+  </rule>
+
+  <rule id="quit">
+    <one-of>
+      <item>take the money</item>
+      <item>walk away</item>
+      <item>quit game</item>
+    </one-of>
+    <tag>out.takeMoney = true;</tag>
+  </rule>
+</grammar>

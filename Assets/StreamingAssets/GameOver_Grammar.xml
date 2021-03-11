@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<grammar xml:lang="en" root="gameOverMenu" tag-format="semantics/1.0" version="1.0" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="gameOverMenu">
+    <one-of>
+      <item>
+        <ruleref uri="#playAgain" />
+        <tag>out = rules.playAgain;</tag>
+      </item>
+      <item>
+        <ruleref uri="#quit" />
+        <tag>out = rules.quit;</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="playAgain">
+    <one-of>
+      <item>play</item>
+      <item>play the game</item>
+      <item>new game</item>
+      <item>start game</item>
+      <item>start new game</item>
+      <item>play new game</item>
+      <item>play again</item>
+      <item>try again</item>
+    </one-of>
+    <tag>out.option = "play-game";</tag>
+  </rule>
+
+  <rule id="quit">
+    <one-of>
+      <item>quit</item>
+      <item>close</item>
+      <item>shutdown</item>
+      <item>go home</item>
+      <item>go to main menu</item>
+      <item>home</item>
+      <item>main menu</item>
+    </one-of>
+    <tag>out.option = "quit-game";</tag>
+  </rule>
+</grammar>
