@@ -41,7 +41,7 @@ public class AnswerButton : MonoBehaviour
 
     public void OnClick()
     {
-        if (isSelected)
+        if (isSelected && !isDisabled)
         {
             CheckAnswer();
         }
@@ -61,7 +61,7 @@ public class AnswerButton : MonoBehaviour
 
     private void OnFinalAnswerEvent()
     {
-        if (isSelected)
+        if (isSelected && !isDisabled)
         {
             CheckAnswer();
         }
@@ -94,8 +94,6 @@ public class AnswerButton : MonoBehaviour
 
             StartCoroutine(gameController.EndGame());
         }
-
-        DisableAll(false);
     }
 
     private void SetSelected(bool flag)

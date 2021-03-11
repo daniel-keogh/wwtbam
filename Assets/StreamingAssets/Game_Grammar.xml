@@ -23,7 +23,7 @@
   </rule>
 
   <rule id="lifeline">
-    Use lifeline
+    use lifeline
     <one-of>
       <item>
         <ruleref uri="#askAudience" />
@@ -56,7 +56,7 @@
   </rule>
 
   <rule id="selectAnswer">
-    Choose
+    choose
     <one-of>
       <item>
         A

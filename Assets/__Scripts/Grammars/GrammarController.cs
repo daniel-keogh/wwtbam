@@ -8,20 +8,20 @@ public abstract class GrammarController : MonoBehaviour
 {
     [Header("Grammar")]
     [Tooltip("The SRGS grammar file used by this object.")]
-    [SerializeField] private Object xmlFile;
+    [SerializeField] private string xmlFile;
     [SerializeField] private ConfidenceLevel confidence = ConfidenceLevel.Low;
 
     private GrammarRecognizer gr;
 
     public virtual void Start()
     {
-        gr = new GrammarRecognizer($"{Application.streamingAssetsPath}/{xmlFile.name}.xml", confidence);
+        gr = new GrammarRecognizer($"{Application.streamingAssetsPath}/{xmlFile}.xml", confidence);
         gr.OnPhraseRecognized += OnPhraseRecognized;
         gr.Start();
 
         if (gr.IsRunning)
         {
-            Debug.Log($"Loaded {xmlFile.name}.xml grammar.");
+            Debug.Log($"Loaded {xmlFile}.xml grammar.");
         }
     }
 
@@ -33,7 +33,7 @@ public abstract class GrammarController : MonoBehaviour
     {
         if (gr != null && gr.IsRunning)
         {
-            Debug.Log($"Stopping grammar recognition for {xmlFile.name}.xml...");
+            Debug.Log($"Stopping grammar recognition for {xmlFile}.xml...");
 
             gr.OnPhraseRecognized -= OnPhraseRecognized;
             gr.Stop();

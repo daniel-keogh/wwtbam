@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI statusText;
+    [SerializeField] private string defaultStatus;
 
     private QuestionDisplay questionDisplay;
     private Question currentQuestion;
@@ -170,7 +171,7 @@ public class GameController : MonoBehaviour
                questionDisplay.DisplayQuestion();
                AnswerButton.ResetAll();
 
-               statusText.text = "";
+               statusText.text = defaultStatus;
            })
            .Catch(err =>
            {
