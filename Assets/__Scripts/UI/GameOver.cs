@@ -9,11 +9,9 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    private GameController gc;
-
     void Start()
     {
-        gc = FindObjectOfType<GameController>();
+        var gc = FindObjectOfType<GameController>();
 
         if (gc != null)
         {
@@ -23,17 +21,5 @@ public class GameOver : MonoBehaviour
         {
             scoreText.text += "0";
         }
-    }
-
-    public void OnPlayClicked()
-    {
-        gc?.ResetGame();
-        SceneManager.LoadScene(SceneNames.GameScene);
-    }
-
-    public void OnQuitClicked()
-    {
-        gc?.ResetGame();
-        SceneManager.LoadScene(SceneNames.MainMenu);
     }
 }

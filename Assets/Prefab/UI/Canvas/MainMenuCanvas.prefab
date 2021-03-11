@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 2199139550975047325}
   - component: {fileID: 2199139550975047324}
   - component: {fileID: 2199139550975047315}
-  - component: {fileID: 2199139550526152518}
   m_Layer: 0
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -163,18 +162,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2199139550526152518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2199139550975047313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1cb706c02e5a2543846f6f0494e856e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2199139551698748167
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,11 +430,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2199139550526152518}
+      objectReference: {fileID: 0}
     - target: {fileID: 5745845855863633893, guid: faf5addb97b736b4f9f2afd6c8e3e184,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPlayClicked
+      value: GameScene
       objectReference: {fileID: 0}
     - target: {fileID: 5745845855863633894, guid: faf5addb97b736b4f9f2afd6c8e3e184,
         type: 3}
@@ -773,7 +760,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2199139550526152518}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5973000641603347658, guid: 9b094e22caad67b4abdf2500d36fe38b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
     - target: {fileID: 5973000641603347659, guid: 9b094e22caad67b4abdf2500d36fe38b,
         type: 3}
       propertyPath: m_Pivot.x

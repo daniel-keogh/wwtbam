@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statusText;
     [SerializeField] private string defaultStatus;
 
+    private SceneController sc;
     private QuestionDisplay questionDisplay;
     private Question currentQuestion;
     private Answer correctAnswer;
@@ -78,6 +79,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         questionDisplay = FindObjectOfType<QuestionDisplay>();
+        sc = FindObjectOfType<SceneController>();
 
         if (SceneManager.GetActiveScene().name == SceneNames.GameScene)
         {
@@ -108,7 +110,7 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(gameOverDelay);
 
-        SceneManager.LoadScene(SceneNames.GameOver);
+        sc.GameOver();
     }
 
     public int GetFinalWinnings()
@@ -144,7 +146,7 @@ public class GameController : MonoBehaviour
     public void TakeTheMoney()
     {
         didWalkAway = true;
-        SceneManager.LoadScene(SceneNames.GameOver);
+        sc.GameOver();
     }
 
     public void ResetGame()
