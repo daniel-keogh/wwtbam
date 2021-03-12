@@ -10,11 +10,18 @@ using Utilities;
 
 public class GameController : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private AudioClip correctAnswerClip;
+    [SerializeField] private AudioClip wrongAnswerClip;
+
     [Header("Delays")]
     [Tooltip("Delay between showing the answer to the current question and loading the next question.")]
     [SerializeField] private float nextQuestionDelay = 3f;
     [Tooltip("Delay between showing the user they answered incorrectly and loading the GameOver scene.")]
     [SerializeField] private float gameOverDelay = 5f;
+    [Tooltip("Delay before showing the user if they got the correct answer.")]
+    [SerializeField] private float revealAnswerDelay = 4f;
+
 
     [Header("Prize Money")]
     [Tooltip("The list of prizes that can be one in the game.")]
@@ -43,7 +50,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statusText;
     [SerializeField] private string defaultStatus;
 
-    private SceneController sc;
+    private SceneController sceneController;
+    private SoundController soundController;
     private QuestionDisplay questionDisplay;
     private Question currentQuestion;
     private Answer correctAnswer;
@@ -71,6 +79,8 @@ public class GameController : MonoBehaviour
         set => statusText.text = value;
     }
 
+    public float RevealAnswerDelay => revealAnswerDelay;
+
     void Awake()
     {
         SetupSingleton();
@@ -79,7 +89,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         questionDisplay = FindObjectOfType<QuestionDisplay>();
-        sc = FindObjectOfType<SceneController>();
+        sceneController = FindObjectOfType<SceneController>();
+        soundController = FindObjectOfType<SoundController>();
 
         if (SceneManager.GetActiveScene().name == SceneNames.GameScene)
         {
@@ -91,6 +102,8 @@ public class GameController : MonoBehaviour
     public IEnumerator LoadNextQuestion()
     {
         statusText.text = "That's the right answer!";
+
+        soundController.PlayOneShot(correctAnswerClip);
 
         yield return new WaitForSeconds(nextQuestionDelay);
 
@@ -108,9 +121,11 @@ public class GameController : MonoBehaviour
     {
         statusText.text = "That's the wrong answer.";
 
+        soundController.PlayOneShot(wrongAnswerClip);
+
         yield return new WaitForSeconds(gameOverDelay);
 
-        sc.GameOver();
+        sceneController.GameOver();
     }
 
     public int GetFinalWinnings()
@@ -146,7 +161,7 @@ public class GameController : MonoBehaviour
     public void TakeTheMoney()
     {
         didWalkAway = true;
-        sc.GameOver();
+        sceneController.GameOver();
     }
 
     public void ResetGame()

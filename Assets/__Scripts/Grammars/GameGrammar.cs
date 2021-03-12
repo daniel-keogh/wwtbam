@@ -10,7 +10,7 @@ namespace Grammars
     /// <summary>
     /// The grammar controller for the main game scene. 
     /// </summary>
-    public class GameGrammarController : GrammarController
+    public class GameGrammar : GrammarController
     {
         [SerializeField] private GameObject quitConfirmationDialog;
 

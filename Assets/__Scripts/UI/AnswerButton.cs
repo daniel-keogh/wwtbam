@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Grammars;
+using TMPro;
 
 public class AnswerButton : MonoBehaviour
 {
     [SerializeField] private Answer answerValue;
+    [SerializeField] private AudioClip finalAnswerClip;
+
+    [Header("Text")]
+    [SerializeField] private TextMeshProUGUI answerText;
+    [SerializeField] private TextMeshProUGUI letterText;
 
     [Header("Backgrounds")]
     [SerializeField] private GameObject selectedBackground;
@@ -15,12 +21,20 @@ public class AnswerButton : MonoBehaviour
     private bool isSelected = false;
     private bool isDisabled = false;
 
+    private Color normalTextColor;
+    private Color normalLetterColor;
+
     private List<AnswerButton> answerButtons;
     private GameController gameController;
+    private SoundController soundController;
 
     void Start()
     {
         gameController = FindObjectOfType<GameController>();
+        soundController = FindObjectOfType<SoundController>();
+
+        normalTextColor = answerText.color;
+        normalLetterColor = letterText.color;
 
         // Maintain a list of the other buttons
         answerButtons = FindObjectsOfType<AnswerButton>()
@@ -30,21 +44,21 @@ public class AnswerButton : MonoBehaviour
 
     void OnEnable()
     {
-        GameGrammarController.OnAnswerSelected += OnAnswerSelectedEvent;
-        GameGrammarController.OnFinalAnswer += OnFinalAnswerEvent;
+        GameGrammar.OnAnswerSelected += OnAnswerSelectedEvent;
+        GameGrammar.OnFinalAnswer += OnFinalAnswerEvent;
     }
 
     void OnDisable()
     {
-        GameGrammarController.OnAnswerSelected -= OnAnswerSelectedEvent;
-        GameGrammarController.OnFinalAnswer -= OnFinalAnswerEvent;
+        GameGrammar.OnAnswerSelected -= OnAnswerSelectedEvent;
+        GameGrammar.OnFinalAnswer -= OnFinalAnswerEvent;
     }
 
     public void OnClick()
     {
         if (isSelected && !isDisabled)
         {
-            CheckAnswer();
+            StartCoroutine(CheckAnswer());
         }
         else
         {
@@ -64,16 +78,20 @@ public class AnswerButton : MonoBehaviour
     {
         if (isSelected && !isDisabled)
         {
-            CheckAnswer();
+            StartCoroutine(CheckAnswer());
         }
     }
 
-    private void CheckAnswer()
+    private IEnumerator CheckAnswer()
     {
         Answer correctAnswer = gameController.CorrectAnswer;
 
         // Momentarily prevent the user from pressing other buttons
         DisableAll(true);
+
+        soundController.PlayOneShot(finalAnswerClip);
+
+        yield return new WaitForSeconds(gameController.RevealAnswerDelay);
 
         // Indicate whether or not the chosen answer was correct
         if (answerValue == correctAnswer)
@@ -90,6 +108,8 @@ public class AnswerButton : MonoBehaviour
                 if (ab.answerValue == correctAnswer)
                 {
                     ab.answerBackground.SetActive(true);
+                    ab.letterText.color = Color.black;
+                    ab.answerText.color = Color.black;
                 }
             });
 
@@ -108,6 +128,14 @@ public class AnswerButton : MonoBehaviour
             {
                 answerButtons.ForEach(ab => ab.SetSelected(false));
                 gameController.StatusText = "Is that your final answer?";
+
+                letterText.color = Color.black;
+                answerText.color = Color.black;
+            }
+            else
+            {
+                answerText.color = normalTextColor;
+                letterText.color = normalLetterColor;
             }
         }
     }

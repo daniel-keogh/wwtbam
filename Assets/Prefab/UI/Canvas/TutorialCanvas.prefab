@@ -193,7 +193,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 612085393181146290}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.67622316
+  m_Size: 0.27028805
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -263,14 +263,28 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=#3EA9F1><b>Selecting an Answer</b></color>\r\n\r\nTo select your
-    answer to a question you should say the letter of your chosen answer. You should
-    then say \"Final Answer\" to confirm your choice.\r\n\r\n<color=#3EA9F1><b>Using
-    Lifelines</b></color>\r\n\r\nTo use a lifeline, simply say the name of the lifeline.
-    They are as follows:\r\n\r\n- Phone a friend.\r\n- Ask the audience.\r\n- 50/50\r\n\r\n<color=#3EA9F1><b>Quitting
-    the Game</b></color>\r\n\r\nIf you don't know an answer, you can take the money
-    by saying \"take the money\". You can then say \"Yes\" or \"No\" to confirm your
-    decision. \r\n\r\n"
+  m_text: "<color=#3EA9F1><b>Using voice Commands<b></color>\r\n\nYou can use voice
+    commands anywhere in this application where you see a \\uf3c9 symbol.\n\n<color=#3EA9F1><b>This
+    Tutorial<b></color>\r\n\nYou can view this tutorial at anytime by saying \"Show
+    tutorial\" and close it by saying \"Hide tutorial\".\n\n<color=#3EA9F1><b>Selecting
+    an Answer</b></color>\r\n\r\nTo select your answer to a question you should say
+    the word \"Choose\", followed by the letter of your chosen answer (A, B, C, or
+    D). \n\nYou should then say \"Final Answer\" to confirm your choice.\r\n\r\n<color=#3EA9F1><b>Using
+    Lifelines</b></color>\r\n\r\nTo use a lifeline say \"Use lifeline\", followed
+    by the name of the lifeline. They are as follows:\r\n\r\n- Phone a friend.\r\n-
+    Ask the audience.\r\n- 50/50\r\n\r\n<color=#3EA9F1><b>Quitting the Game</b></color>\r\n\r\nIf
+    you don't know an answer, you can choose to take the money by saying \"take the
+    money\" or \"walk away\". You can then say \"Yes\" or \"No\" to confirm your
+    decision. \r\n\r\n<color=#3EA9F1><b>Main Menu</b></color>\r\nAt the main menu
+    you can play a new game by saying \"Play game\" or some variation thereof. \n\nYou
+    can also view the leaderboard by saying \"Show leaderboard\" and \"Hide leaderboard\"
+    to hide it again. \n\nLastly, you can close the application by saying \"Close
+    application\".\n\n<color=#3EA9F1><b>Game Over</b></color>\r\n\nTo save your score
+    to the leaderboard, you can enter your name as follows:\n\n- \"Upper\" + a letter
+    for an uppercase letter.\n- \"Lower\" + a letter for a lowercase letter.\n- \"Space\"
+    for a space.\n- \"Backspace\" for a backspace.\n- And \"Submit name\" to save
+    your name.\n\nTo replay the game you can say \"Play again\", or \"Go to main
+    menu\" if you'd prefer.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

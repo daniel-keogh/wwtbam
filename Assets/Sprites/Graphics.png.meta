@@ -162,10 +162,10 @@ TextureImporter:
       name: Ans_RT
       rect:
         serializedVersion: 2
-        x: 1013
-        y: 275
-        width: 988
-        height: 85
+        x: 1014
+        y: 274
+        width: 651
+        height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,9 +183,9 @@ TextureImporter:
       name: Ans_RB
       rect:
         serializedVersion: 2
-        x: 1013
+        x: 1014
         y: 183
-        width: 990
+        width: 651
         height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -204,10 +204,10 @@ TextureImporter:
       name: Sel_R
       rect:
         serializedVersion: 2
-        x: 1013
-        y: 92
-        width: 990
-        height: 85
+        x: 1014
+        y: 91
+        width: 651
+        height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: Correct_R
       rect:
         serializedVersion: 2
-        x: 1013
+        x: 1014
         y: 0
-        width: 990
-        height: 85
+        width: 651
+        height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,10 +246,10 @@ TextureImporter:
       name: Sel_L
       rect:
         serializedVersion: 2
-        x: 0
-        y: 92
-        width: 1013
-        height: 85
+        x: 353
+        y: 91
+        width: 662
+        height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,10 +267,10 @@ TextureImporter:
       name: Correct_L
       rect:
         serializedVersion: 2
-        x: 0
+        x: 353
         y: 0
-        width: 1013
-        height: 85
+        width: 661
+        height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,9 +288,9 @@ TextureImporter:
       name: Ans_LB
       rect:
         serializedVersion: 2
-        x: 0
+        x: 353
         y: 183
-        width: 1013
+        width: 661
         height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -309,10 +309,10 @@ TextureImporter:
       name: Ans_LT
       rect:
         serializedVersion: 2
-        x: 0
-        y: 275
-        width: 1013
-        height: 85
+        x: 353
+        y: 274
+        width: 661
+        height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

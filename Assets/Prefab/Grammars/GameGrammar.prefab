@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2593462641108211092}
   - component: {fileID: 7567723018638395942}
   m_Layer: 0
-  m_Name: GameGrammarController
+  m_Name: GameGrammar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

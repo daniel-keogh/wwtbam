@@ -567,7 +567,7 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 801e28403436d801
+  metroCertificateNotAfter: 80e91fd17636d801
   metroApplicationDescription: Template_2D
   wsaImages: {}
   metroTileShortName: wwtbam

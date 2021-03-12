@@ -43,8 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216ad32d7e617f64992d52676664f3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextQuestionDelay: 3
-  gameOverDelay: 5
+  correctAnswerClip: {fileID: 8300000, guid: 3d5c5b729fe799c4f9e9ed59bf72d6e8, type: 3}
+  wrongAnswerClip: {fileID: 8300000, guid: 95f529d45473ea74e9a68ccde07533d8, type: 3}
+  nextQuestionDelay: 5
+  gameOverDelay: 6
+  revealAnswerDelay: 5
   prizes: 00000000f4010000e8030000d00700008813000010270000204e000050c30000f8240100f049020090d0030020a1070040420f00
   safetyNets: e803000050c30000
   statusText: {fileID: 0}

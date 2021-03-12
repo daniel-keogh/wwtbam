@@ -11,7 +11,7 @@ namespace Grammars
     /// <summary>
     /// Grammar controller used by the main menu scene.
     /// </summary>
-    public class MenuGrammarController : GrammarController
+    public class MenuGrammar : GrammarController
     {
         [Header("Events")]
         [Tooltip("Fired whenever the user says one of the play keywords.")]

@@ -8,6 +8,11 @@ using Utilities;
 
 public class LifelinesUI : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private AudioClip fiftyFiftyClip;
+    [SerializeField] private AudioClip askTheAudienceClip;
+    [SerializeField] private AudioClip phoneAFriendClip;
+
     [Header("Buttons")]
     [SerializeField] private Button askTheAudienceButton;
     [SerializeField] private Button phoneAFriendButton;
@@ -22,25 +27,29 @@ public class LifelinesUI : MonoBehaviour
     [SerializeField] private string[] friends = { "John", "Michael", "Maria" };
 
     private GameController gc;
+    private SoundController sc;
 
     void Start()
     {
         gc = FindObjectOfType<GameController>();
+        sc = FindObjectOfType<SoundController>();
     }
 
     void OnEnable()
     {
-        GameGrammarController.OnLifeline += OnLifelineEvent;
+        GameGrammar.OnLifeline += OnLifelineEvent;
     }
 
     void OnDisable()
     {
-        GameGrammarController.OnLifeline -= OnLifelineEvent;
+        GameGrammar.OnLifeline -= OnLifelineEvent;
     }
 
     public void FiftyFifty()
     {
         if (!fiftyFiftyButton.interactable) return;
+
+        sc.PlayOneShot(fiftyFiftyClip);
 
         // Pick a random wrong answer to keep
         var incorrect = gc.CurrentQuestion.incorrect_answers;
@@ -62,6 +71,8 @@ public class LifelinesUI : MonoBehaviour
     {
         if (!phoneAFriendButton.interactable) return;
 
+        sc.PlayOneShot(phoneAFriendClip);
+
         string friend = friends[Random.Range(0, friends.Length)];
 
         gc.StatusText = $"Your friend {friend} thinks the answer is {GetLifelineAnswer()}.";
@@ -72,6 +83,8 @@ public class LifelinesUI : MonoBehaviour
     public void AskTheAudience()
     {
         if (!askTheAudienceButton.interactable) return;
+
+        sc.PlayOneShot(askTheAudienceClip);
 
         gc.StatusText = $"The audience think the answer is {GetLifelineAnswer()}.";
 

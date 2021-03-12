@@ -8,7 +8,7 @@ using Grammars.Common;
 
 namespace Grammars
 {
-    public class GameOverGrammarController : GrammarController
+    public class GameOverGrammar : GrammarController
     {
         [SerializeField] private GameOver gameOverUI;
 
