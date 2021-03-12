@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Creates a gradient backgound
+/// Creates a backgound gradient
 /// Ref: https://stackoverflow.com/a/44821232
 /// </summary>
 [ExecuteInEditMode]
 [RequireComponent(typeof(RawImage))]
-public class GradientBackground : MonoBehaviour
+public class BackgroundGradient : MonoBehaviour
 {
     [SerializeField] private Color[] colors = new Color[] { };
 

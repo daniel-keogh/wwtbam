@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace OpenTDB
+namespace Data
 {
     /// <summary>
     /// Abstract base class for all models. Just contains an override of ToString()
