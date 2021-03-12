@@ -22,9 +22,8 @@ public class GameController : MonoBehaviour
     [Tooltip("Delay before showing the user if they got the correct answer.")]
     [SerializeField] private float revealAnswerDelay = 4f;
 
-
     [Header("Prize Money")]
-    [Tooltip("The list of prizes that can be one in the game.")]
+    [Tooltip("The list of prizes that can be won in the game.")]
     [SerializeField]
     private List<int> prizes = new List<int>
     {
@@ -50,6 +49,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statusText;
     [SerializeField] private string defaultStatus;
 
+    [Header("Status Messages")]
+    [SerializeField] private string correctAnswerStatus = "That's the right answer!";
+    [SerializeField] private string incorrectAnswerStatus = "That's the wrong answer.";
+
     private SceneController sceneController;
     private SoundController soundController;
     private QuestionDisplay questionDisplay;
@@ -68,6 +71,8 @@ public class GameController : MonoBehaviour
     public List<int> Prizes => prizes;
     public List<int> SafetyNets => safetyNets;
 
+    public float RevealAnswerDelay => revealAnswerDelay;
+
     public string A => allAnswers[(int)Answer.A];
     public string B => allAnswers[(int)Answer.B];
     public string C => allAnswers[(int)Answer.C];
@@ -78,8 +83,6 @@ public class GameController : MonoBehaviour
         get => statusText.text;
         set => statusText.text = value;
     }
-
-    public float RevealAnswerDelay => revealAnswerDelay;
 
     void Awake()
     {
@@ -101,7 +104,7 @@ public class GameController : MonoBehaviour
 
     public IEnumerator LoadNextQuestion()
     {
-        statusText.text = "That's the right answer!";
+        statusText.text = correctAnswerStatus;
 
         soundController.PlayOneShot(correctAnswerClip);
 
@@ -119,7 +122,7 @@ public class GameController : MonoBehaviour
 
     public IEnumerator EndGame()
     {
-        statusText.text = "That's the wrong answer.";
+        statusText.text = incorrectAnswerStatus;
 
         soundController.PlayOneShot(wrongAnswerClip);
 

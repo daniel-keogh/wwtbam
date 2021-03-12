@@ -1403,6 +1403,21 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5745845855863633892, guid: faf5addb97b736b4f9f2afd6c8e3e184,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745845855863633892, guid: faf5addb97b736b4f9f2afd6c8e3e184,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.64705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745845855863633892, guid: faf5addb97b736b4f9f2afd6c8e3e184,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.58431375
+      objectReference: {fileID: 0}
     - target: {fileID: 5745845855863633893, guid: faf5addb97b736b4f9f2afd6c8e3e184,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

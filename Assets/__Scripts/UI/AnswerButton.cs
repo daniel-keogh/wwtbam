@@ -8,11 +8,14 @@ using TMPro;
 public class AnswerButton : MonoBehaviour
 {
     [SerializeField] private Answer answerValue;
+
+    [Header("Audio")]
     [SerializeField] private AudioClip finalAnswerClip;
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI answerText;
     [SerializeField] private TextMeshProUGUI letterText;
+    [SerializeField] private string answerSelectedStatus = "Is that your final answer?";
 
     [Header("Backgrounds")]
     [SerializeField] private GameObject selectedBackground;
@@ -27,6 +30,8 @@ public class AnswerButton : MonoBehaviour
     private List<AnswerButton> answerButtons;
     private GameController gameController;
     private SoundController soundController;
+
+    private const string U_HOURGLASS = "\uf252";
 
     void Start()
     {
@@ -90,6 +95,7 @@ public class AnswerButton : MonoBehaviour
         DisableAll(true);
 
         soundController.PlayOneShot(finalAnswerClip);
+        gameController.StatusText = U_HOURGLASS;
 
         yield return new WaitForSeconds(gameController.RevealAnswerDelay);
 
@@ -127,7 +133,7 @@ public class AnswerButton : MonoBehaviour
             if (isSelected)
             {
                 answerButtons.ForEach(ab => ab.SetSelected(false));
-                gameController.StatusText = "Is that your final answer?";
+                gameController.StatusText = answerSelectedStatus;
 
                 letterText.color = Color.black;
                 answerText.color = Color.black;

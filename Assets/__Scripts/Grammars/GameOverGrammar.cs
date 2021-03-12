@@ -10,14 +10,15 @@ namespace Grammars
 {
     public class GameOverGrammar : GrammarController
     {
-        [SerializeField] private GameOver gameOverUI;
-
         [Header("Events")]
         [Tooltip("Fired whenever the user says one of the play keywords.")]
         [SerializeField] private UnityEvent onPlayUtterance;
 
         [Tooltip("Fired whenever the user says one of the quit keywords.")]
         [SerializeField] private UnityEvent onQuitUtterance;
+
+        [Header("UI")]
+        [SerializeField] private GameOver gameOverUI;
 
         private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
