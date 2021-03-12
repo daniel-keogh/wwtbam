@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Windows.Speech;
 using Grammars.Common;
 
@@ -13,11 +12,7 @@ namespace Grammars
     /// </summary>
     public class GameGrammarController : GrammarController
     {
-        [Tooltip("Fired whenever the user asks to see the tutorial.")]
-        [SerializeField] private UnityEvent onShowTutorialUtterance;
-
-        [Tooltip("Fired whenever the user asks to see the tutorial.")]
-        [SerializeField] private UnityEvent onHideTutorialUtterance;
+        [SerializeField] private GameObject quitConfirmationDialog;
 
         public delegate void AnswerSelectedEvent(Answer answer);
         public delegate void FinalAnswerEvent();
@@ -60,7 +55,10 @@ namespace Grammars
                         HandleLifeline(valueString);
                         break;
                     case Keys.TakeTheMoney:
-                        HandleTakeTheMoney();
+                        quitConfirmationDialog.SetActive(true);
+                        break;
+                    case Keys.QuitConfirmation:
+                        HandleQuitConfirmation(valueString);
                         break;
                     case Common.Keys.Tutorial:
                         actions[valueString].Invoke();
@@ -120,10 +118,17 @@ namespace Grammars
             }
         }
 
-        private void HandleTakeTheMoney()
+        private void HandleQuitConfirmation(string valueString)
         {
-            Debug.Log("Taking the money...");
-            gc.TakeTheMoney();
+            if (bool.TryParse(valueString, out _))
+            {
+                Debug.Log("Taking the money...");
+                gc.TakeTheMoney();
+            }
+            else
+            {
+                quitConfirmationDialog.SetActive(false);
+            }
         }
 
         private static class Keys
@@ -132,6 +137,7 @@ namespace Grammars
             public const string FinalAnswer = "finalAnswer";
             public const string Lifeline = "lifeline";
             public const string TakeTheMoney = "takeMoney";
+            public const string QuitConfirmation = "quitConfirmation";
         }
 
         private static class Lifelines

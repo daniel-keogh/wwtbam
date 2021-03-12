@@ -16,12 +16,6 @@ namespace Grammars
         [Tooltip("Fired whenever the user says one of the play keywords.")]
         [SerializeField] private UnityEvent onPlayUtterance;
 
-        [Tooltip("Fired whenever the user asks to view the tutorial screen.")]
-        [SerializeField] private UnityEvent onShowTutorialUtterance;
-
-        [Tooltip("Fired whenever the user asks to hide the tutorial screen.")]
-        [SerializeField] private UnityEvent onHideTutorialUtterance;
-
         [Tooltip("Fired whenever the user says one of the quit keywords.")]
         [SerializeField] private UnityEvent onQuitUtterance;
 

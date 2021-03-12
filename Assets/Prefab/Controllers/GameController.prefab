@@ -48,3 +48,4 @@ MonoBehaviour:
   prizes: 00000000f4010000e8030000d00700008813000010270000204e000050c30000f8240100f049020090d0030020a1070040420f00
   safetyNets: e803000050c30000
   statusText: {fileID: 0}
+  defaultStatus: 'Try asking: "What can I say?"'

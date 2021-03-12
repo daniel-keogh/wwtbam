@@ -415,7 +415,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45f94bfaa4d42ba43864b1c97bcc4966, type: 3}
---- !u!28 &1013281109
+--- !u!1 &847428551 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 883097854, guid: 901a05789d919fa44bfb8f7ae0437bf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 620154998540264516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1154422879 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 620154997528853531, guid: 901a05789d919fa44bfb8f7ae0437bf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 620154998540264516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!28 &1297166734
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -457,12 +469,6 @@ Texture2D:
     offset: 0
     size: 0
     path: 
---- !u!224 &1154422879 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 620154997528853531, guid: 901a05789d919fa44bfb8f7ae0437bf7,
-    type: 3}
-  m_PrefabInstance: {fileID: 620154998540264516}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1369675270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7567723018638395942, guid: b81b04bb21178284e84880bbdf9ebed3,
         type: 3}
+      propertyPath: quitConfirmationDialog
+      value: 
+      objectReference: {fileID: 847428551}
+    - target: {fileID: 7567723018638395942, guid: b81b04bb21178284e84880bbdf9ebed3,
+        type: 3}
       propertyPath: onHideTutorialUtterance.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1389829919}
@@ -1246,11 +1257,6 @@ PrefabInstance:
       propertyPath: statusText
       value: 
       objectReference: {fileID: 620154998540264517}
-    - target: {fileID: 5024078691433107392, guid: e9c69c8c17a578044a0da36900fba6e8,
-        type: 3}
-      propertyPath: defaultStatus
-      value: 'Try asking: "What can I say?"'
-      objectReference: {fileID: 0}
     - target: {fileID: 5024078691433107394, guid: e9c69c8c17a578044a0da36900fba6e8,
         type: 3}
       propertyPath: m_Name

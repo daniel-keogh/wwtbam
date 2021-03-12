@@ -21,6 +21,10 @@
         <ruleref uri="#quit" />
         <tag>out = rules.quit;</tag>
       </item>
+      <item>
+        <ruleref uri="#confirmQuit" />
+        <tag>out = rules.confirmQuit;</tag>
+      </item>
 
       <!-- Imports -->
       <item>
@@ -100,5 +104,24 @@
       <item>quit game</item>
     </one-of>
     <tag>out.takeMoney = true;</tag>
+  </rule>
+
+  <rule id="confirmQuit">
+    <one-of>
+      <item>
+        <one-of>
+          <item>confirm</item>
+          <item>yes</item>
+        </one-of>
+        <tag>out.quitConfirmation = true;</tag>
+      </item>
+      <item>
+        <one-of>
+          <item>cancel</item>
+          <item>no</item>
+        </one-of>
+        <tag>out.quitConfirmation = false;</tag>
+      </item>
+    </one-of>
   </rule>
 </grammar>

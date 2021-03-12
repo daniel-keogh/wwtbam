@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Windows.Speech;
 
 namespace Grammars
@@ -12,6 +13,13 @@ namespace Grammars
         [Tooltip("The SRGS grammar file used by this object.")]
         [SerializeField] private string xmlFile;
         [SerializeField] private ConfidenceLevel confidence = ConfidenceLevel.Low;
+
+        [Header("Tutorial")]
+        [Tooltip("Fired whenever the user asks to view the tutorial screen.")]
+        [SerializeField] protected UnityEvent onShowTutorialUtterance;
+
+        [Tooltip("Fired whenever the user asks to hide the tutorial screen.")]
+        [SerializeField] protected UnityEvent onHideTutorialUtterance;
 
         private GrammarRecognizer gr;
 
