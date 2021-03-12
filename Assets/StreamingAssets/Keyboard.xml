@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Voice controlled keyboard for handling user input -->
+<grammar xml:lang="en" root="getInput" tag-format="semantics/1.0" version="1.0" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="getInput" scope="public">
+    <one-of>
+      <item>
+        lower
+        <ruleref uri="#lowerLetter" />
+        <tag>out.inputLetter = rules.lowerLetter;</tag>
+      </item>
+      <item>
+        upper
+        <ruleref uri="#upperLetter" />
+        <tag>out.inputLetter = rules.upperLetter;</tag>
+      </item>
+      <item>
+        <ruleref uri="#special"/>
+        <tag>out.inputLetter = rules.special;</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="upperLetter">
+    <one-of>
+      <item>A <tag>out = "A";</tag> </item>
+      <item>B <tag>out = "B";</tag> </item>
+      <item>C <tag>out = "C";</tag> </item>
+      <item>D <tag>out = "D";</tag> </item>
+      <item>E <tag>out = "E";</tag> </item>
+      <item>F <tag>out = "F";</tag> </item>
+      <item>G <tag>out = "G";</tag> </item>
+      <item>H <tag>out = "H";</tag> </item>
+      <item>I <tag>out = "I";</tag> </item>
+      <item>J <tag>out = "J";</tag> </item>
+      <item>K <tag>out = "K";</tag> </item>
+      <item>L <tag>out = "L";</tag> </item>
+      <item>M <tag>out = "M";</tag> </item>
+      <item>N <tag>out = "N";</tag> </item>
+      <item>O <tag>out = "O";</tag> </item>
+      <item>P <tag>out = "P";</tag> </item>
+      <item>Q <tag>out = "Q";</tag> </item>
+      <item>R <tag>out = "R";</tag> </item>
+      <item>S <tag>out = "S";</tag> </item>
+      <item>T <tag>out = "T";</tag> </item>
+      <item>U <tag>out = "U";</tag> </item>
+      <item>V <tag>out = "V";</tag> </item>
+      <item>W <tag>out = "W";</tag> </item>
+      <item>X <tag>out = "X";</tag> </item>
+      <item>Y <tag>out = "Y";</tag> </item>
+      <item>Z <tag>out = "Z";</tag> </item>
+    </one-of>
+  </rule>
+
+  <rule id="lowerLetter">
+    <one-of>
+      <item>a <tag>out = "a";</tag> </item>
+      <item>b <tag>out = "b";</tag> </item>
+      <item>c <tag>out = "c";</tag> </item>
+      <item>d <tag>out = "d";</tag> </item>
+      <item>e <tag>out = "e";</tag> </item>
+      <item>f <tag>out = "f";</tag> </item>
+      <item>g <tag>out = "g";</tag> </item>
+      <item>h <tag>out = "h";</tag> </item>
+      <item>i <tag>out = "i";</tag> </item>
+      <item>j <tag>out = "j";</tag> </item>
+      <item>k <tag>out = "k";</tag> </item>
+      <item>l <tag>out = "l";</tag> </item>
+      <item>m <tag>out = "m";</tag> </item>
+      <item>n <tag>out = "n";</tag> </item>
+      <item>o <tag>out = "o";</tag> </item>
+      <item>p <tag>out = "p";</tag> </item>
+      <item>q <tag>out = "q";</tag> </item>
+      <item>r <tag>out = "r";</tag> </item>
+      <item>s <tag>out = "s";</tag> </item>
+      <item>t <tag>out = "t";</tag> </item>
+      <item>u <tag>out = "u";</tag> </item>
+      <item>v <tag>out = "v";</tag> </item>
+      <item>w <tag>out = "w";</tag> </item>
+      <item>x <tag>out = "x";</tag> </item>
+      <item>y <tag>out = "y";</tag> </item>
+      <item>z <tag>out = "z";</tag> </item>
+    </one-of>
+  </rule>
+
+  <rule id="special">
+    <one-of>
+      <item>
+        <item>space</item>
+        <tag>out = "Space";</tag>
+      </item>
+
+      <!-- Cancel actions -->
+      <item>
+        <one-of>
+          <item>backspace</item>
+          <item>back space</item>
+        </one-of>
+        <tag>out = "Backspace";</tag>
+      </item>
+
+      <!-- Confirmation actions -->
+      <item>
+        <one-of>
+          <item>enter</item>
+          <item>submit</item>
+          <item>save</item>
+        </one-of>
+        name
+        <tag>out = "Submit";</tag>
+      </item>
+    </one-of>
+  </rule>
+</grammar>

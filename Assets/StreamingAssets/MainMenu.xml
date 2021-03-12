@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Grammar used by the MainMenu scene -->
+<grammar xml:lang="en" root="mainMenu" tag-format="semantics/1.0" version="1.0" xmlns="http://www.w3.org/2001/06/grammar">
+  <!-- ROOT -->
+  <rule id="mainMenu">
+    <one-of>
+      <item>
+        <ruleref uri="#playGame" />
+        <tag>out = rules.playGame;</tag>
+      </item>
+      <item>
+        <ruleref uri="#showLeaderboard" />
+        <tag>out = rules.showLeaderboard;</tag>
+      </item>
+      <item>
+        <ruleref uri="#quitApplication" />
+        <tag>out = rules.quitApplication;</tag>
+      </item>
+
+      <!-- Imports -->
+      <item>
+        <ruleref uri="Tutorial.xml#showTutorial" />
+        <tag>out = rules.latest();</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <!-- Start a new game -->
+  <rule id="playGame">
+    <one-of>
+      <item>play game</item>
+      <item>play the game</item>
+      <item>new game</item>
+      <item>start game</item>
+      <item>start new game</item>
+      <item>play new game</item>
+    </one-of>
+    <tag>out.option = "play-game";</tag>
+  </rule>
+
+  <!-- Show/Dismiss the leaderboard screen -->
+  <rule id="showLeaderboard">
+    <one-of>
+      <item>
+        show
+        <ruleref uri="#leaderboard" />
+        <tag>out.leaderboard = "leaderboard-show";</tag>
+      </item>
+      <item>
+        hide
+        <ruleref uri="#leaderboard" />
+        <tag>out.leaderboard = "leaderboard-hide";</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="leaderboard">
+    <one-of>
+      <item>leaderboard</item>
+      <item>leader board</item>
+    </one-of>
+  </rule>
+
+  <!-- Quit the application -->
+  <rule id="quitApplication">
+    <one-of>
+      <item>quit</item>
+      <item>close</item>
+      <item>shut</item>
+      <item>shutdown</item>
+    </one-of>
+    application
+    <tag>out.option = "quit-game";</tag>
+  </rule>
+</grammar>

@@ -19,6 +19,12 @@ public class GameOver : MonoBehaviour
     private Coroutine confirmCoroutine;
     private GameController gc;
 
+    public string NameInput
+    {
+        get => nameInput.text;
+        set => nameInput.text = value;
+    }
+
     void Start()
     {
         gc = FindObjectOfType<GameController>();
@@ -38,7 +44,7 @@ public class GameOver : MonoBehaviour
             StopCoroutine(confirmCoroutine);
         }
 
-        if (string.IsNullOrEmpty(nameInput.text))
+        if (string.IsNullOrEmpty(nameInput.text.Trim()))
         {
             confirmCoroutine = StartCoroutine(ShowConfirmation("Name can't be empty!"));
             return;

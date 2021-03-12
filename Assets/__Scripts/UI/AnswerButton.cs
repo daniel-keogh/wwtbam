@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Grammars;
 
 public class AnswerButton : MonoBehaviour
 {
@@ -106,6 +107,7 @@ public class AnswerButton : MonoBehaviour
             if (isSelected)
             {
                 answerButtons.ForEach(ab => ab.SetSelected(false));
+                gameController.StatusText = "Is that your final answer?";
             }
         }
     }

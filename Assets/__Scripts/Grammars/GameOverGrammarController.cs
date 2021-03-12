@@ -8,25 +8,18 @@ using Grammars.Common;
 
 namespace Grammars
 {
-    /// <summary>
-    /// Grammar controller used by the main menu scene.
-    /// </summary>
-    public class MenuGrammarController : GrammarController
+    public class GameOverGrammarController : GrammarController
     {
+        [SerializeField] private GameOver gameOverUI;
+
         [Header("Events")]
         [Tooltip("Fired whenever the user says one of the play keywords.")]
         [SerializeField] private UnityEvent onPlayUtterance;
 
-        [Tooltip("Fired whenever the user asks to see the leaderboard.")]
-        [SerializeField] private UnityEvent onShowLeaderboardUtterance;
-
-        [Tooltip("Fired whenever the user asks to hide the leaderboard.")]
-        [SerializeField] private UnityEvent onHideLeaderboardUtterance;
-
-        [Tooltip("Fired whenever the user asks to see the tutorial.")]
+        [Tooltip("Fired whenever the user asks to view the tutorial screen.")]
         [SerializeField] private UnityEvent onShowTutorialUtterance;
 
-        [Tooltip("Fired whenever the user asks to hide the tutorial.")]
+        [Tooltip("Fired whenever the user asks to hide the tutorial screen.")]
         [SerializeField] private UnityEvent onHideTutorialUtterance;
 
         [Tooltip("Fired whenever the user says one of the quit keywords.")]
@@ -43,9 +36,6 @@ namespace Grammars
 
             actions.Add(Tutorial.Show, () => onShowTutorialUtterance?.Invoke());
             actions.Add(Tutorial.Hide, () => onHideTutorialUtterance?.Invoke());
-
-            actions.Add(Leaderboard.Show, () => onShowLeaderboardUtterance?.Invoke());
-            actions.Add(Leaderboard.Hide, () => onHideLeaderboardUtterance?.Invoke());
         }
 
         public override void OnPhraseRecognized(PhraseRecognizedEventArgs args)
@@ -59,14 +49,37 @@ namespace Grammars
 
                 Debug.Log($"Key: {keyString}, Value: {valueString}");
 
-                if (
-                    keyString == Keys.Option ||
-                    keyString == Keys.Leaderboard ||
-                    keyString == Keys.Tutorial
-                )
+                if (keyString == Keys.Option || keyString == Keys.Tutorial)
                 {
                     actions[valueString]?.Invoke();
                 }
+                else if (keyString == Keys.InputLetter)
+                {
+                    HandleLetterInput(valueString);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Insert the spoken letter into the text field.
+        /// </summary>
+        private void HandleLetterInput(string letter)
+        {
+            switch (letter)
+            {
+                case SpecialLetters.Submit:
+                    gameOverUI.OnSaveScore();
+                    break;
+                case SpecialLetters.Backspace:
+                    if (gameOverUI.NameInput.Length > 0)
+                        gameOverUI.NameInput = gameOverUI.NameInput.Substring(0, gameOverUI.NameInput.Length - 1);
+                    break;
+                case SpecialLetters.Space:
+                    gameOverUI.NameInput += " ";
+                    break;
+                default:
+                    gameOverUI.NameInput += letter;
+                    break;
             }
         }
     }

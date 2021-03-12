@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+<!-- Main game grammar -->
 <grammar xml:lang="en" root="playAction" tag-format="semantics/1.0" version="1.0" xmlns="http://www.w3.org/2001/06/grammar">
+  <!-- ROOT -->
   <rule id="playAction">
     <one-of>
       <item>
@@ -19,9 +21,16 @@
         <ruleref uri="#quit" />
         <tag>out = rules.quit;</tag>
       </item>
+
+      <!-- Imports -->
+      <item>
+        <ruleref uri="Tutorial.xml#showTutorial" />
+        <tag>out = rules.latest();</tag>
+      </item>
     </one-of>
   </rule>
 
+  <!-- Lifelines -->
   <rule id="lifeline">
     use lifeline
     <one-of>
@@ -55,6 +64,7 @@
     <tag>out.lifeline = "phone-friend";</tag>
   </rule>
 
+  <!-- Answer selection & confirmation -->
   <rule id="selectAnswer">
     choose
     <one-of>
@@ -82,6 +92,7 @@
     <tag>out.finalAnswer = true;</tag>
   </rule>
 
+  <!-- Quitting the game -->
   <rule id="quit">
     <one-of>
       <item>take the money</item>

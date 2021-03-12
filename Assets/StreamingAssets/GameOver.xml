@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<grammar xml:lang="en" root="gameOverMenu" tag-format="semantics/1.0" version="1.0" xmlns="http://www.w3.org/2001/06/grammar">
-  <rule id="gameOverMenu">
+<!-- Grammar for the GameOver scene -->
+<grammar xml:lang="en" root="gameOver" tag-format="semantics/1.0" version="1.0" xmlns="http://www.w3.org/2001/06/grammar">
+  <!-- ROOT -->
+  <rule id="gameOver">
     <one-of>
       <item>
         <ruleref uri="#playAgain" />
@@ -11,12 +13,22 @@
         <ruleref uri="#quit" />
         <tag>out = rules.quit;</tag>
       </item>
+
+      <!-- Imports -->
+      <item>
+        <ruleref uri="Keyboard.xml#getInput" />
+        <tag>out = rules.latest();</tag>
+      </item>
+      <item>
+        <ruleref uri="Tutorial.xml#showTutorial" />
+        <tag>out = rules.latest();</tag>
+      </item>
     </one-of>
   </rule>
 
+  <!-- Play the game again -->
   <rule id="playAgain">
     <one-of>
-      <item>play</item>
       <item>play the game</item>
       <item>new game</item>
       <item>start game</item>
@@ -28,15 +40,12 @@
     <tag>out.option = "play-game";</tag>
   </rule>
 
+  <!-- Quit to the main menu -->
   <rule id="quit">
+    go
     <one-of>
-      <item>quit</item>
-      <item>close</item>
-      <item>shutdown</item>
-      <item>go home</item>
-      <item>go to main menu</item>
       <item>home</item>
-      <item>main menu</item>
+      <item>to main menu</item>
     </one-of>
     <tag>out.option = "quit-game";</tag>
   </rule>

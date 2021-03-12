@@ -549,7 +549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter your name to save it to the leaderboard.
+  m_text: Enter your name to add it to the leaderboard.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1696,6 +1696,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5973000640689526186, guid: 9b094e22caad67b4abdf2500d36fe38b,
         type: 3}
+      propertyPath: m_text
+      value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5973000640689526186, guid: 9b094e22caad67b4abdf2500d36fe38b,
+        type: 3}
       propertyPath: m_fontSize
       value: 45.65
       objectReference: {fileID: 0}
@@ -1742,7 +1747,7 @@ PrefabInstance:
     - target: {fileID: 5973000641603347656, guid: 9b094e22caad67b4abdf2500d36fe38b,
         type: 3}
       propertyPath: m_Name
-      value: QuitButton
+      value: MainMenuButton
       objectReference: {fileID: 0}
     - target: {fileID: 5973000641603347658, guid: 9b094e22caad67b4abdf2500d36fe38b,
         type: 3}

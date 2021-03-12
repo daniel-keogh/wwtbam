@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Grammar for showing the tutorial screen -->
+<grammar xml:lang="en" root="showTutorial" tag-format="semantics/1.0" version="1.0" xmlns="http://www.w3.org/2001/06/grammar">
+  <!-- ROOT -->
+  <rule id="showTutorial" scope="public">
+    <one-of>
+      <item>
+        <ruleref uri="#show" />
+        <tag>out = rules.show;</tag>
+      </item>
+      <item>
+        <ruleref uri="#hide" />
+        <tag>out = rules.hide;</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <!-- Show the tutorial screen -->
+  <rule id="show">
+    <one-of>
+      <item>what can i say</item>
+      <item>show tutorial</item>
+      <item>show help</item>
+    </one-of>
+    <tag>out.tutorial = "tutorial-show";</tag>
+  </rule>
+
+  <!-- Hide the tutorial screen -->
+  <rule id="hide">
+    hide
+    <one-of>
+      <item>tutorial</item>
+      <item>help</item>
+    </one-of>
+    <tag>out.tutorial = "tutorial-hide";</tag>
+  </rule>
+</grammar>

@@ -2,127 +2,143 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Windows.Speech;
+using Grammars.Common;
 
-/// <summary>
-/// The grammar controller for the main game scene. 
-/// </summary>
-public class GameGrammarController : GrammarController
+namespace Grammars
 {
-    public delegate void AnswerSelectedEvent(Answer answer);
-    public delegate void FinalAnswerEvent();
-    public delegate void LifelineEvent(Lifeline lifeline);
-
-    public static AnswerSelectedEvent OnAnswerSelected;
-    public static FinalAnswerEvent OnFinalAnswer;
-    public static LifelineEvent OnLifeline;
-
-    private GameController gc;
-
-    public override void Start()
+    /// <summary>
+    /// The grammar controller for the main game scene. 
+    /// </summary>
+    public class GameGrammarController : GrammarController
     {
-        base.Start();
-        gc = FindObjectOfType<GameController>();
-    }
+        [Tooltip("Fired whenever the user asks to see the tutorial.")]
+        [SerializeField] private UnityEvent onShowTutorialUtterance;
 
-    public override void OnPhraseRecognized(PhraseRecognizedEventArgs args)
-    {
-        SemanticMeaning[] meanings = args.semanticMeanings;
+        [Tooltip("Fired whenever the user asks to see the tutorial.")]
+        [SerializeField] private UnityEvent onHideTutorialUtterance;
 
-        foreach (var meaning in meanings)
+        public delegate void AnswerSelectedEvent(Answer answer);
+        public delegate void FinalAnswerEvent();
+        public delegate void LifelineEvent(Lifeline lifeline);
+
+        public static AnswerSelectedEvent OnAnswerSelected;
+        public static FinalAnswerEvent OnFinalAnswer;
+        public static LifelineEvent OnLifeline;
+
+        private GameController gc;
+        private Dictionary<string, Action> actions = new Dictionary<string, Action>();
+
+        public override void Start()
         {
-            string keyString = meaning.key.Trim();
-            string valueString = meaning.values[0].Trim();
+            base.Start();
+            gc = FindObjectOfType<GameController>();
 
-            Debug.Log(keyString + " " + valueString);
+            actions.Add(Tutorial.Show, () => onShowTutorialUtterance?.Invoke());
+            actions.Add(Tutorial.Hide, () => onHideTutorialUtterance?.Invoke());
+        }
 
-            switch (keyString)
+        public override void OnPhraseRecognized(PhraseRecognizedEventArgs args)
+        {
+            SemanticMeaning[] meanings = args.semanticMeanings;
+
+            foreach (var meaning in meanings)
             {
-                case Keys.AnswerSelected:
-                    HandleAnswerSelected(valueString);
+                string keyString = meaning.key.Trim();
+                string valueString = meaning.values[0].Trim();
+
+                switch (keyString)
+                {
+                    case Keys.AnswerSelected:
+                        HandleAnswerSelected(valueString);
+                        break;
+                    case Keys.FinalAnswer:
+                        HandleFinalAnswer();
+                        break;
+                    case Keys.Lifeline:
+                        HandleLifeline(valueString);
+                        break;
+                    case Keys.TakeTheMoney:
+                        HandleTakeTheMoney();
+                        break;
+                    case Common.Keys.Tutorial:
+                        actions[valueString].Invoke();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void HandleAnswerSelected(string valueString)
+        {
+            Debug.Log($"Selecting answer {valueString}...");
+
+            switch (valueString)
+            {
+                case "A":
+                    OnAnswerSelected?.Invoke(Answer.A);
                     break;
-                case Keys.FinalAnswer:
-                    HandleFinalAnswer();
+                case "B":
+                    OnAnswerSelected?.Invoke(Answer.B);
                     break;
-                case Keys.Lifeline:
-                    HandleLifeline(valueString);
+                case "C":
+                    OnAnswerSelected?.Invoke(Answer.C);
                     break;
-                case Keys.TakeTheMoney:
-                    HandleTakeTheMoney();
+                case "D":
+                    OnAnswerSelected?.Invoke(Answer.D);
                     break;
                 default:
                     break;
             }
         }
-    }
 
-    private void HandleAnswerSelected(string valueString)
-    {
-        Debug.Log($"Selecting answer {valueString}...");
-
-        switch (valueString)
+        private void HandleFinalAnswer()
         {
-            case "A":
-                OnAnswerSelected?.Invoke(Answer.A);
-                break;
-            case "B":
-                OnAnswerSelected?.Invoke(Answer.B);
-                break;
-            case "C":
-                OnAnswerSelected?.Invoke(Answer.C);
-                break;
-            case "D":
-                OnAnswerSelected?.Invoke(Answer.D);
-                break;
-            default:
-                break;
+            Debug.Log($"Final answer...");
+            OnFinalAnswer?.Invoke();
         }
-    }
 
-    private void HandleFinalAnswer()
-    {
-        Debug.Log($"Final answer...");
-        OnFinalAnswer?.Invoke();
-    }
-
-    private void HandleLifeline(string valueString)
-    {
-        Debug.Log($"Using lifeline " + valueString);
-
-        switch (valueString)
+        private void HandleLifeline(string valueString)
         {
-            case LifelineValues.AskTheAudience:
-                OnLifeline?.Invoke(Lifeline.AskTheAudience);
-                break;
-            case LifelineValues.FiftyFifty:
-                OnLifeline?.Invoke(Lifeline.FiftyFifty);
-                break;
-            case LifelineValues.PhoneAFriend:
-                OnLifeline?.Invoke(Lifeline.PhoneAFriend);
-                break;
-            default:
-                break;
+            Debug.Log($"Using lifeline " + valueString);
+
+            switch (valueString)
+            {
+                case Lifelines.AskTheAudience:
+                    OnLifeline?.Invoke(Lifeline.AskTheAudience);
+                    break;
+                case Lifelines.FiftyFifty:
+                    OnLifeline?.Invoke(Lifeline.FiftyFifty);
+                    break;
+                case Lifelines.PhoneAFriend:
+                    OnLifeline?.Invoke(Lifeline.PhoneAFriend);
+                    break;
+                default:
+                    break;
+            }
         }
-    }
 
-    private void HandleTakeTheMoney()
-    {
-        Debug.Log("Taking the money...");
-        gc.TakeTheMoney();
-    }
+        private void HandleTakeTheMoney()
+        {
+            Debug.Log("Taking the money...");
+            gc.TakeTheMoney();
+        }
 
-    private static class Keys
-    {
-        public const string AnswerSelected = "selected";
-        public const string FinalAnswer = "finalAnswer";
-        public const string Lifeline = "lifeline";
-        public const string TakeTheMoney = "takeMoney";
-    }
+        private static class Keys
+        {
+            public const string AnswerSelected = "selected";
+            public const string FinalAnswer = "finalAnswer";
+            public const string Lifeline = "lifeline";
+            public const string TakeTheMoney = "takeMoney";
+        }
 
-    private static class LifelineValues
-    {
-        public const string AskTheAudience = "ask-audience";
-        public const string FiftyFifty = "fifty-fifty";
-        public const string PhoneAFriend = "phone-friend";
+        private static class Lifelines
+        {
+            public const string AskTheAudience = "ask-audience";
+            public const string FiftyFifty = "fifty-fifty";
+            public const string PhoneAFriend = "phone-friend";
+        }
     }
 }

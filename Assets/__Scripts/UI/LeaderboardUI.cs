@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Data;
 
-public class Leaderboard : MonoBehaviour
+public class LeaderboardUI : MonoBehaviour
 {
     [SerializeField] private GameObject leaderboardItemPrefab;
     [SerializeField] private VerticalLayoutGroup layoutGroup;
