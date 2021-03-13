@@ -109,9 +109,11 @@ public class LifelinesUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Randomly decide which answer to give to the player
+    /// </summary>
     private string GetLifelineAnswer()
     {
-        // Randomly decide which answer to give to the player
         if (Random.value <= GetProbability())
         {
             return gc.CorrectAnswer.ToString();
@@ -122,9 +124,11 @@ public class LifelinesUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Determine probability the audience/friend will know the correct answer
+    /// </summary>
     private float GetProbability()
     {
-        // Determine probability the audience/friend will know the correct answer
         string difficulty = gc.CurrentQuestion.difficulty;
 
         if (difficulty == Difficulty.Easy)

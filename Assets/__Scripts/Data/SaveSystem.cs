@@ -7,9 +7,15 @@ namespace Data
 {
     public static class SaveSystem
     {
-        // Path to the LeaderBoard data file
+        /// <summary>
+        /// Path to the LeaderBoard data file
+        /// </summary>
         private static readonly string LEADERBOARD_DATA_PATH = Application.persistentDataPath + "/leaderboard.json";
 
+        /// <summary>
+        /// Saves the given PlayerData object to the leaderboard.json file.
+        /// </summary>
+        /// <param name="player"></param>
         public static void SaveToLeaderBoard(PlayerData player)
         {
             // Read the current LeaderBoard
@@ -27,7 +33,6 @@ namespace Data
             temp.Sort();
             temp.Reverse();
 
-            // Save the new LeaderBoard to the leaderboard.json file
             var lb = new LeaderBoard
             {
                 players = temp
@@ -36,6 +41,10 @@ namespace Data
             File.WriteAllText(LEADERBOARD_DATA_PATH, lb.ToString());
         }
 
+        /// <summary>
+        /// Loads the existing leaderboard from the filesystem, or creates a new one if the
+        /// file doesn't exist.
+        /// </summary>
         public static LeaderBoard LoadLeaderBoard()
         {
             try
@@ -49,6 +58,9 @@ namespace Data
             }
         }
 
+        /// <summary>
+        /// Deletes the leaderboard.json file.
+        /// </summary>
         public static void ClearLeaderBoard()
         {
             if (File.Exists(LEADERBOARD_DATA_PATH))

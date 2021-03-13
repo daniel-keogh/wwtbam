@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
-using Grammars.Common;
 
 namespace Grammars
 {
@@ -23,15 +22,11 @@ namespace Grammars
         public static LifelineEvent OnLifeline;
 
         private GameController gc;
-        private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
         public override void Start()
         {
             base.Start();
             gc = FindObjectOfType<GameController>();
-
-            actions.Add(Tutorial.Show, () => onShowTutorialUtterance?.Invoke());
-            actions.Add(Tutorial.Hide, () => onHideTutorialUtterance?.Invoke());
         }
 
         public override void OnPhraseRecognized(PhraseRecognizedEventArgs args)
@@ -61,7 +56,7 @@ namespace Grammars
                         HandleQuitConfirmation(valueString);
                         break;
                     case Common.Keys.Tutorial:
-                        actions[valueString].Invoke();
+                        Actions[valueString].Invoke();
                         break;
                     default:
                         break;
@@ -100,7 +95,7 @@ namespace Grammars
 
         private void HandleLifeline(string valueString)
         {
-            Debug.Log($"Using lifeline " + valueString);
+            Debug.Log($"Using lifeline {valueString}...");
 
             switch (valueString)
             {

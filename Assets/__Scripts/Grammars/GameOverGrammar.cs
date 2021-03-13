@@ -11,26 +11,20 @@ namespace Grammars
     public class GameOverGrammar : GrammarController
     {
         [Header("Events")]
-        [Tooltip("Fired whenever the user says one of the play keywords.")]
+        [Tooltip("Fired whenever the user says one of the play phrases.")]
         [SerializeField] private UnityEvent onPlayUtterance;
-
-        [Tooltip("Fired whenever the user says one of the quit keywords.")]
+        [Tooltip("Fired whenever the user says one of the quit phrases.")]
         [SerializeField] private UnityEvent onQuitUtterance;
 
         [Header("UI")]
         [SerializeField] private GameOver gameOverUI;
 
-        private Dictionary<string, Action> actions = new Dictionary<string, Action>();
-
         public override void Start()
         {
             base.Start();
 
-            actions.Add(Option.Play, () => onPlayUtterance?.Invoke());
-            actions.Add(Option.Quit, () => onQuitUtterance?.Invoke());
-
-            actions.Add(Tutorial.Show, () => onShowTutorialUtterance?.Invoke());
-            actions.Add(Tutorial.Hide, () => onHideTutorialUtterance?.Invoke());
+            Actions.Add(Option.Play, onPlayUtterance.Invoke);
+            Actions.Add(Option.Quit, onQuitUtterance.Invoke);
         }
 
         public override void OnPhraseRecognized(PhraseRecognizedEventArgs args)
@@ -46,7 +40,7 @@ namespace Grammars
 
                 if (keyString == Keys.Option || keyString == Keys.Tutorial)
                 {
-                    actions[valueString]?.Invoke();
+                    Actions[valueString]?.Invoke();
                 }
                 else if (keyString == Keys.InputLetter)
                 {

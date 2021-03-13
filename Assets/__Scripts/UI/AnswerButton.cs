@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Grammars;
 using TMPro;
+using Grammars;
+using Utilities;
 
 public class AnswerButton : MonoBehaviour
 {
@@ -13,8 +14,8 @@ public class AnswerButton : MonoBehaviour
     [SerializeField] private AudioClip finalAnswerClip;
 
     [Header("Text")]
-    [SerializeField] private TextMeshProUGUI answerText;
     [SerializeField] private TextMeshProUGUI letterText;
+    [SerializeField] private TextMeshProUGUI answerText;
     [SerializeField] private string answerSelectedStatus = "Is that your final answer?";
 
     [Header("Backgrounds")]
@@ -26,17 +27,14 @@ public class AnswerButton : MonoBehaviour
 
     private Color normalTextColor;
     private Color normalLetterColor;
-
+    private GameController gc;
+    private SoundController sc;
     private List<AnswerButton> answerButtons;
-    private GameController gameController;
-    private SoundController soundController;
-
-    private const string U_HOURGLASS = "\uf252";
 
     void Start()
     {
-        gameController = FindObjectOfType<GameController>();
-        soundController = FindObjectOfType<SoundController>();
+        gc = FindObjectOfType<GameController>();
+        sc = FindObjectOfType<SoundController>();
 
         normalTextColor = answerText.color;
         normalLetterColor = letterText.color;
@@ -89,15 +87,16 @@ public class AnswerButton : MonoBehaviour
 
     private IEnumerator CheckAnswer()
     {
-        Answer correctAnswer = gameController.CorrectAnswer;
+        Answer correctAnswer = gc.CorrectAnswer;
 
         // Momentarily prevent the user from pressing other buttons
         DisableAll(true);
 
-        soundController.PlayOneShot(finalAnswerClip);
-        gameController.StatusText = U_HOURGLASS;
+        // Give some feedback
+        sc.PlayOneShot(finalAnswerClip);
+        gc.StatusText = Icons.Hourglass;
 
-        yield return new WaitForSeconds(gameController.RevealAnswerDelay);
+        yield return new WaitForSeconds(gc.RevealAnswerDelay);
 
         // Indicate whether or not the chosen answer was correct
         if (answerValue == correctAnswer)
@@ -105,7 +104,7 @@ public class AnswerButton : MonoBehaviour
             SetSelected(false);
             answerBackground.SetActive(true);
 
-            StartCoroutine(gameController.LoadNextQuestion());
+            StartCoroutine(gc.LoadNextQuestion());
         }
         else
         {
@@ -119,7 +118,7 @@ public class AnswerButton : MonoBehaviour
                 }
             });
 
-            StartCoroutine(gameController.EndGame());
+            StartCoroutine(gc.EndGame());
         }
     }
 
@@ -130,10 +129,10 @@ public class AnswerButton : MonoBehaviour
             isSelected = flag;
             selectedBackground.SetActive(flag);
 
-            if (isSelected)
+            if (flag)
             {
                 answerButtons.ForEach(ab => ab.SetSelected(false));
-                gameController.StatusText = answerSelectedStatus;
+                gc.StatusText = answerSelectedStatus;
 
                 letterText.color = Color.black;
                 answerText.color = Color.black;

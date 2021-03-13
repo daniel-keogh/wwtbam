@@ -11,6 +11,7 @@ public class GameOver : MonoBehaviour
 
     [Header("Confirmation")]
     [SerializeField] private TextMeshProUGUI saveConfirmationText;
+    [Tooltip("The amount of time the confirmation text will be visible")]
     [SerializeField] private float confirmTimeout = 3f;
 
     private int winnings;
@@ -37,6 +38,9 @@ public class GameOver : MonoBehaviour
         scoreText.text += $"{string.Format("{0:n0}", winnings)}";
     }
 
+    /// <summary>
+    /// Saves the player's score to the leaderboard.
+    /// </summary>
     public void OnSaveScore()
     {
         if (confirmCoroutine != null)

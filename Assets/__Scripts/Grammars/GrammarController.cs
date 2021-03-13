@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Windows.Speech;
+using Grammars.Common;
 
 namespace Grammars
 {
@@ -10,18 +14,20 @@ namespace Grammars
     public abstract class GrammarController : MonoBehaviour
     {
         [Header("Grammar")]
-        [Tooltip("The SRGS grammar file used by this object.")]
+        [Tooltip("The name of the SRGS grammar file used by this object.")]
         [SerializeField] private string xmlFile;
         [SerializeField] private ConfidenceLevel confidence = ConfidenceLevel.Low;
 
         [Header("Tutorial")]
         [Tooltip("Fired whenever the user asks to view the tutorial screen.")]
         [SerializeField] protected UnityEvent onShowTutorialUtterance;
-
         [Tooltip("Fired whenever the user asks to hide the tutorial screen.")]
         [SerializeField] protected UnityEvent onHideTutorialUtterance;
 
         private GrammarRecognizer gr;
+        private Dictionary<string, Action> actions = new Dictionary<string, Action>();
+
+        protected Dictionary<string, Action> Actions => actions;
 
         public virtual void Start()
         {
@@ -33,6 +39,9 @@ namespace Grammars
             {
                 Debug.Log($"Loaded {xmlFile} grammar.");
             }
+
+            actions.Add(Tutorial.Show, onShowTutorialUtterance.Invoke);
+            actions.Add(Tutorial.Hide, onHideTutorialUtterance.Invoke);
         }
 
         void OnApplicationQuit() => Shutdown();

@@ -14,32 +14,23 @@ namespace Grammars
     public class MenuGrammar : GrammarController
     {
         [Header("Events")]
-        [Tooltip("Fired whenever the user says one of the play keywords.")]
+        [Tooltip("Fired whenever the user says one of the play phrases.")]
         [SerializeField] private UnityEvent onPlayUtterance;
-
         [Tooltip("Fired whenever the user asks to see the leaderboard.")]
         [SerializeField] private UnityEvent onShowLeaderboardUtterance;
-
         [Tooltip("Fired whenever the user asks to hide the leaderboard.")]
         [SerializeField] private UnityEvent onHideLeaderboardUtterance;
-
-        [Tooltip("Fired whenever the user says one of the quit keywords.")]
+        [Tooltip("Fired whenever the user says one of the quit phrases.")]
         [SerializeField] private UnityEvent onQuitUtterance;
-
-        private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
         public override void Start()
         {
             base.Start();
 
-            actions.Add(Option.Play, () => onPlayUtterance?.Invoke());
-            actions.Add(Option.Quit, () => onQuitUtterance?.Invoke());
-
-            actions.Add(Tutorial.Show, () => onShowTutorialUtterance?.Invoke());
-            actions.Add(Tutorial.Hide, () => onHideTutorialUtterance?.Invoke());
-
-            actions.Add(Leaderboard.Show, () => onShowLeaderboardUtterance?.Invoke());
-            actions.Add(Leaderboard.Hide, () => onHideLeaderboardUtterance?.Invoke());
+            Actions.Add(Option.Play, onPlayUtterance.Invoke);
+            Actions.Add(Option.Quit, onQuitUtterance.Invoke);
+            Actions.Add(Leaderboard.Show, onShowLeaderboardUtterance.Invoke);
+            Actions.Add(Leaderboard.Hide, onHideLeaderboardUtterance.Invoke);
         }
 
         public override void OnPhraseRecognized(PhraseRecognizedEventArgs args)
@@ -59,7 +50,7 @@ namespace Grammars
                     keyString == Keys.Tutorial
                 )
                 {
-                    actions[valueString]?.Invoke();
+                    Actions[valueString]?.Invoke();
                 }
             }
         }

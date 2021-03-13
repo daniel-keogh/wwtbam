@@ -64,13 +64,10 @@ public class GameController : MonoBehaviour
     private bool didWalkAway = false;
 
     public int CurrentWinnings => prizes[currentQuestionNumber];
-
     public Question CurrentQuestion => currentQuestion;
     public Answer CorrectAnswer => correctAnswer;
-
     public List<int> Prizes => prizes;
     public List<int> SafetyNets => safetyNets;
-
     public float RevealAnswerDelay => revealAnswerDelay;
 
     public string A => allAnswers[(int)Answer.A];
@@ -104,8 +101,8 @@ public class GameController : MonoBehaviour
 
     public IEnumerator LoadNextQuestion()
     {
+        // Give the player some feedback
         statusText.text = correctAnswerStatus;
-
         soundController.PlayOneShot(correctAnswerClip);
 
         yield return new WaitForSeconds(nextQuestionDelay);
@@ -122,8 +119,8 @@ public class GameController : MonoBehaviour
 
     public IEnumerator EndGame()
     {
+        // Give the player some feedback
         statusText.text = incorrectAnswerStatus;
-
         soundController.PlayOneShot(wrongAnswerClip);
 
         yield return new WaitForSeconds(gameOverDelay);

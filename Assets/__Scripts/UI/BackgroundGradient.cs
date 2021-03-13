@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Creates a backgound gradient
+/// Creates a backgound gradient texture
 /// Ref: https://stackoverflow.com/a/44821232
 /// </summary>
 [ExecuteInEditMode]
@@ -26,6 +26,7 @@ public class BackgroundGradient : MonoBehaviour
         backgroundTexture.filterMode = FilterMode.Bilinear;
         backgroundTexture.SetPixels(colors);
         backgroundTexture.Apply();
+
         image.texture = backgroundTexture;
     }
 }
