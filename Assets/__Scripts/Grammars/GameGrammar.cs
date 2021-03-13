@@ -17,9 +17,9 @@ namespace Grammars
         public delegate void FinalAnswerEvent();
         public delegate void LifelineEvent(Lifeline lifeline);
 
-        public static AnswerSelectedEvent OnAnswerSelected;
-        public static FinalAnswerEvent OnFinalAnswer;
-        public static LifelineEvent OnLifeline;
+        public static event AnswerSelectedEvent OnAnswerSelected;
+        public static event FinalAnswerEvent OnFinalAnswer;
+        public static event LifelineEvent OnLifeline;
 
         private GameController gc;
 
