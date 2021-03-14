@@ -24,6 +24,7 @@ public class LifelinesUI : MonoBehaviour
     [SerializeField] private float mediumProbability = 0.5f;
     [SerializeField] private float hardProbability = 0.25f;
 
+    [Tooltip("Random names to output when the user asks to phone a friend.")]
     [SerializeField] private string[] friends = { "John", "Michael", "Maria" };
 
     private GameController gc;

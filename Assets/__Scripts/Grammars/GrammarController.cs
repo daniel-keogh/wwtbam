@@ -39,6 +39,10 @@ namespace Grammars
             {
                 Debug.Log($"Loaded {xmlFile} grammar.");
             }
+            else
+            {
+                Debug.LogWarning("GrammarRecognizer is not running");
+            }
 
             actions.Add(Tutorial.Show, onShowTutorialUtterance.Invoke);
             actions.Add(Tutorial.Hide, onHideTutorialUtterance.Invoke);

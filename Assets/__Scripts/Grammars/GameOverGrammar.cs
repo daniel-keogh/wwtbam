@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Windows.Speech;
+using TMPro;
+using Utilities;
 using Grammars.Common;
 
 namespace Grammars
@@ -18,6 +20,9 @@ namespace Grammars
 
         [Header("UI")]
         [SerializeField] private GameOver gameOverUI;
+        [SerializeField] private TextMeshProUGUI capsLockText;
+
+        private bool capsLock = false;
 
         public override void Start()
         {
@@ -42,6 +47,10 @@ namespace Grammars
                 {
                     Actions[valueString]?.Invoke();
                 }
+                else if (keyString == Keys.CapsLock)
+                {
+                    HandleCapsLock(valueString);
+                }
                 else if (keyString == Keys.InputLetter)
                 {
                     HandleLetterInput(valueString);
@@ -50,25 +59,52 @@ namespace Grammars
         }
 
         /// <summary>
+        /// Toggle CapsLock.
+        /// </summary>
+        private void HandleCapsLock(string valueString)
+        {
+            bool result;
+            if (bool.TryParse(valueString, out result))
+            {
+                capsLock = result;
+                capsLockText.text = $"{Icons.Microphone} CapsLock: {(capsLock ? "On" : "Off")}";
+            }
+        }
+
+        /// <summary>
         /// Insert the spoken letter into the text field.
         /// </summary>
         private void HandleLetterInput(string letter)
         {
-            switch (letter)
+            if (letter == SpecialLetters.Submit)
             {
-                case SpecialLetters.Submit:
-                    gameOverUI.OnSaveScore();
-                    break;
-                case SpecialLetters.Backspace:
-                    if (gameOverUI.NameInput.Length > 0)
-                        gameOverUI.NameInput = gameOverUI.NameInput.Substring(0, gameOverUI.NameInput.Length - 1);
-                    break;
-                case SpecialLetters.Space:
-                    gameOverUI.NameInput += " ";
-                    break;
-                default:
-                    gameOverUI.NameInput += letter;
-                    break;
+                // Submit the form
+                gameOverUI.OnSaveScore();
+            }
+            else if (letter == SpecialLetters.Backspace)
+            {
+                // Remove last letter
+                if (gameOverUI.NameInput.Length > 0)
+                {
+                    gameOverUI.NameInput = gameOverUI.NameInput.Substring(0, gameOverUI.NameInput.Length - 1);
+                }
+            }
+            else if (letter == SpecialLetters.Space)
+            {
+                // Insert a space
+                gameOverUI.NameInput += " ";
+            }
+            else
+            {
+                // Insert a new letter
+                if (capsLock)
+                {
+                    gameOverUI.NameInput += letter.ToUpper();
+                }
+                else
+                {
+                    gameOverUI.NameInput += letter.ToLower();
+                }
             }
         }
     }

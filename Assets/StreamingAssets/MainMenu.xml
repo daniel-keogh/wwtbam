@@ -27,7 +27,7 @@
   </rule>
 
   <!-- Start a new game -->
-  <rule id="playGame">
+  <rule id="playGame" scope="public">
     <one-of>
       <item>play game</item>
       <item>play the game</item>
@@ -70,7 +70,10 @@
       <item>shut</item>
       <item>shutdown</item>
     </one-of>
-    application
+    <one-of>
+      <item>application</item>
+      <item>game</item>
+    </one-of>
     <tag>out.option = "quit-game";</tag>
   </rule>
 </grammar>

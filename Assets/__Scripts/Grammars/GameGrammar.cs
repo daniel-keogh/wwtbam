@@ -56,7 +56,7 @@ namespace Grammars
                         HandleQuitConfirmation(valueString);
                         break;
                     case Common.Keys.Tutorial:
-                        Actions[valueString].Invoke();
+                        Actions[valueString]?.Invoke();
                         break;
                     default:
                         break;
@@ -115,14 +115,18 @@ namespace Grammars
 
         private void HandleQuitConfirmation(string valueString)
         {
-            if (bool.TryParse(valueString, out _))
+            bool result;
+            if (bool.TryParse(valueString, out result))
             {
-                Debug.Log("Taking the money...");
-                gc.TakeTheMoney();
-            }
-            else
-            {
-                quitConfirmationDialog.SetActive(false);
+                if (result)
+                {
+                    Debug.Log("Taking the money...");
+                    gc.TakeTheMoney();
+                }
+                else
+                {
+                    quitConfirmationDialog.SetActive(false);
+                }
             }
         }
 

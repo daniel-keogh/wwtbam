@@ -5,7 +5,9 @@ namespace Grammars.Common
         public const string Option = "option";
         public const string Leaderboard = "leaderboard";
         public const string Tutorial = "tutorial";
+
         public const string InputLetter = "inputLetter";
+        public const string CapsLock = "capsLock";
     }
 
     public static class Option

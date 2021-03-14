@@ -29,11 +29,9 @@
   <!-- Play the game again -->
   <rule id="playAgain">
     <one-of>
-      <item>play the game</item>
-      <item>new game</item>
-      <item>start game</item>
-      <item>start new game</item>
-      <item>play new game</item>
+      <item>
+        <ruleref uri="MainMenu.xml#playGame" />
+      </item>
       <item>play again</item>
       <item>try again</item>
     </one-of>

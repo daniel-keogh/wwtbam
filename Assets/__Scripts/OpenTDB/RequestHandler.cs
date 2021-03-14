@@ -28,8 +28,7 @@ namespace OpenTDB
                     { "category", request.category.ToString() },
                 },
                 EnableDebug = EnableDebug
-            })
-            .Catch(err => throw err as RequestException);
+            });
         }
     }
 }
