@@ -794,14 +794,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1355114885}
     m_Modifications:
-    - target: {fileID: 34999102, guid: df6a05a6e0269204f96891864da3ba2e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 163321506, guid: df6a05a6e0269204f96891864da3ba2e, type: 3}
-      propertyPath: m_text
-      value: '\uf3c9 CapsLock: Off'
-      objectReference: {fileID: 0}
     - target: {fileID: 7004506479757876257, guid: df6a05a6e0269204f96891864da3ba2e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
