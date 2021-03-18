@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Public rules that are shared across multiple grammar files -->
+<grammar xml:lang="en" tag-format="semantics/1.0" version="1.0" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="showCommands" scope="public">
+    <one-of>
+      <item>show</item>
+      <item>view</item>
+      <item>open</item>
+      <item>go to</item>
+    </one-of>
+  </rule>
+
+  <rule id="hideCommands" scope="public">
+    <one-of>
+      <item>hide</item>
+      <item>dismiss</item>
+      <item>close</item>
+    </one-of>
+  </rule>
+
+  <rule id="confirmationCommands" scope="public">
+    <one-of>
+      <item>confirm</item>
+      <item>yes</item>
+      <item>i'm sure</item>
+    </one-of>
+  </rule>
+
+  <rule id="cancellationCommands" scope="public">
+    <one-of>
+      <item>cancel</item>
+      <item>no</item>
+      <item>go back</item>
+    </one-of>
+  </rule>
+</grammar>

@@ -29,12 +29,18 @@
   <!-- Start a new game -->
   <rule id="playGame" scope="public">
     <one-of>
-      <item>play game</item>
-      <item>play the game</item>
+      <item>
+        <one-of>
+          <item>play</item>
+          <item>start</item>
+        </one-of>
+        <one-of>
+          <item>game</item>
+          <item>the game</item>
+          <item>new game</item>
+        </one-of>
+      </item>
       <item>new game</item>
-      <item>start game</item>
-      <item>start new game</item>
-      <item>play new game</item>
     </one-of>
     <tag>out.option = "play-game";</tag>
   </rule>
@@ -43,19 +49,28 @@
   <rule id="showLeaderboard">
     <one-of>
       <item>
-        show
+        <ruleref uri="Common.xml#showCommands" />
         <ruleref uri="#leaderboard" />
         <tag>out.leaderboard = "leaderboard-show";</tag>
       </item>
       <item>
-        hide
-        <ruleref uri="#leaderboard" />
+        <one-of>
+          <item>
+            <ruleref uri="Common.xml#hideCommands" />
+            <ruleref uri="#leaderboard" />
+          </item>
+          <item>go back</item>
+          <item>go home</item>
+          <item>go to main menu</item>
+          <item>main menu</item>
+        </one-of>
         <tag>out.leaderboard = "leaderboard-hide";</tag>
       </item>
     </one-of>
   </rule>
 
   <rule id="leaderboard">
+    <item repeat="0-1">the</item>
     <one-of>
       <item>leaderboard</item>
       <item>leader board</item>
@@ -70,6 +85,9 @@
       <item>shut</item>
       <item>shutdown</item>
     </one-of>
+
+    <item repeat="0-1">the</item>
+
     <one-of>
       <item>application</item>
       <item>game</item>

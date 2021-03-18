@@ -109,17 +109,11 @@
   <rule id="confirmQuit">
     <one-of>
       <item>
-        <one-of>
-          <item>confirm</item>
-          <item>yes</item>
-        </one-of>
+        <ruleref uri="Common.xml#confirmationCommands" />
         <tag>out.quitConfirmation = true;</tag>
       </item>
       <item>
-        <one-of>
-          <item>cancel</item>
-          <item>no</item>
-        </one-of>
+        <ruleref uri="Common.xml#cancellationCommands" />
         <tag>out.quitConfirmation = false;</tag>
       </item>
     </one-of>

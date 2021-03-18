@@ -20,19 +20,29 @@
   <rule id="show">
     <one-of>
       <item>what can i say</item>
-      <item>show tutorial</item>
-      <item>show help</item>
+      <item>what should i say</item>
+      <item>what do i say</item>
+      
+      <item>
+        <ruleref uri="Common.xml#showCommands" />
+        <ruleref uri="#tutorialName" />
+      </item>
     </one-of>
     <tag>out.tutorial = "tutorial-show";</tag>
   </rule>
 
   <!-- Hide the tutorial screen -->
   <rule id="hide">
-    hide
+    <ruleref uri="Common.xml#hideCommands" />
+    <ruleref uri="#tutorialName" />
+    <tag>out.tutorial = "tutorial-hide";</tag>
+  </rule>
+
+  <rule id="tutorialName">
+    <item repeat="0-1">the</item>
     <one-of>
       <item>tutorial</item>
       <item>help</item>
     </one-of>
-    <tag>out.tutorial = "tutorial-hide";</tag>
   </rule>
 </grammar>

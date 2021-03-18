@@ -8,6 +8,9 @@ using TMPro;
 using OpenTDB;
 using Utilities;
 
+/// <summary>
+/// Singleton object for managing the game state.
+/// </summary>
 public class GameController : MonoBehaviour
 {
     [Header("Audio")]
@@ -21,29 +24,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private float gameOverDelay = 5f;
     [Tooltip("Delay before showing the user if they got the correct answer.")]
     [SerializeField] private float revealAnswerDelay = 4f;
-
-    [Header("Prize Money")]
-    [Tooltip("The list of prizes that can be won in the game.")]
-    [SerializeField]
-    private List<int> prizes = new List<int>
-    {
-        0,
-        500,
-        1_000,
-        2_000,
-        5_000,
-        10_000,
-        20_000,
-        50_000,
-        75_000,
-        150_000,
-        250_000,
-        500_000,
-        1_000_000
-    };
-
-    [SerializeField]
-    private List<int> safetyNets = new List<int> { 1_000, 50_000 };
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI statusText;
@@ -62,6 +42,23 @@ public class GameController : MonoBehaviour
     private int numQuestions;
     private int currentQuestionNumber = 0;
     private bool didWalkAway = false;
+    private List<int> prizes = new List<int>
+    {
+        0,
+        500,
+        1_000,
+        2_000,
+        5_000,
+        10_000,
+        20_000,
+        50_000,
+        75_000,
+        150_000,
+        250_000,
+        500_000,
+        1_000_000
+    };
+    private List<int> safetyNets = new List<int> { 1_000, 50_000 };
 
     public int CurrentWinnings => prizes[currentQuestionNumber];
     public Question CurrentQuestion => currentQuestion;
@@ -99,6 +96,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Loads the next question or ends the game if on the last question.
+    /// </summary>
     public IEnumerator LoadNextQuestion()
     {
         // Give the player some feedback
@@ -117,6 +117,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Start the Game Over sequence.
+    /// </summary>
     public IEnumerator EndGame()
     {
         // Give the player some feedback
@@ -128,6 +131,9 @@ public class GameController : MonoBehaviour
         sceneController.GameOver();
     }
 
+    /// <summary>
+    /// Calculates the user's final score in the game.
+    /// </summary>
     public int GetFinalWinnings()
     {
         if (didWalkAway || CurrentWinnings == prizes.Max())
@@ -158,6 +164,9 @@ public class GameController : MonoBehaviour
         questionDisplay.DisplayQuestion();
     }
 
+    /// <summary>
+    /// Quits the current playthrough.
+    /// </summary>
     public void TakeTheMoney()
     {
         didWalkAway = true;
@@ -169,9 +178,11 @@ public class GameController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Fetch and display the next question from the OpenTDB API.
+    /// </summary>
     private void NextQuestion()
     {
-        // Fetch the next question from the OpenTDB API
         var request = new QuestionRequest
         {
             difficulty = GetDifficulty()
@@ -197,6 +208,9 @@ public class GameController : MonoBehaviour
            });
     }
 
+    /// <summary>
+    /// Determines the level of difficulty the next question ought to have.
+    /// </summary>
     private string GetDifficulty()
     {
         if (CurrentWinnings >= safetyNets[1])
@@ -213,6 +227,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Randomises the answers fetched from the API
+    /// </summary>
     private void ShuffleAnswers()
     {
         allAnswers = new List<string>(currentQuestion.incorrect_answers);
@@ -225,17 +242,17 @@ public class GameController : MonoBehaviour
         correctAnswer = (Answer)allAnswers.IndexOf(currentQuestion.correct_answer);
     }
 
+    /// <summary>
+    /// Turns this object into a singleton.
+    /// </summary>
     private void SetupSingleton()
     {
-        // Check for any other objects of the same type
         if (FindObjectsOfType(GetType()).Length > 1)
         {
-            // Destroy the current object
             Destroy(gameObject);
         }
         else
         {
-            // Persist across scenes
             DontDestroyOnLoad(gameObject);
         }
     }

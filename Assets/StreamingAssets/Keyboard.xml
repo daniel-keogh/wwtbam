@@ -22,39 +22,198 @@
 
   <rule id="letter">
     <one-of>
-      <item>alpha <tag>out = "A";</tag> </item>
-      <item>bravo <tag>out = "B";</tag> </item>
-      <item>charlie <tag>out = "C";</tag> </item>
-      <item>delta <tag>out = "D";</tag> </item>
-      <item>echo <tag>out = "E";</tag> </item>
-      <item>foxtrot <tag>out = "F";</tag> </item>
-      <item>golf <tag>out = "G";</tag> </item>
-      <item>hotel <tag>out = "H";</tag> </item>
-      <item>india <tag>out = "I";</tag> </item>
-      <item>juliet <tag>out = "J";</tag> </item>
-      <item>kilo <tag>out = "K";</tag> </item>
-      <item>lima <tag>out = "L";</tag> </item>
-      <item>mike <tag>out = "M";</tag> </item>
-      <item>november <tag>out = "N";</tag> </item>
-      <item>oscar <tag>out = "O";</tag> </item>
-      <item>papa <tag>out = "P";</tag> </item>
-      <item>quebec <tag>out = "Q";</tag> </item>
-      <item>romeo <tag>out = "R";</tag> </item>
-      <item>sierra <tag>out = "S";</tag> </item>
-      <item>tango <tag>out = "T";</tag> </item>
-      <item>uniform <tag>out = "U";</tag> </item>
-      <item>victor <tag>out = "V";</tag> </item>
-      <item>whiskey <tag>out = "W";</tag> </item>
-      <item>x-ray <tag>out = "X";</tag> </item>
-      <item>yankee <tag>out = "Y";</tag> </item>
-      <item>zulu <tag>out = "Z";</tag> </item>
+      <item>
+        <one-of> 
+          <item>alpha</item>
+          <item>A</item>
+        </one-of>
+        <tag>out = "A";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>bravo</item>
+          <item>B</item>
+        </one-of> 
+        <tag>out = "B";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>charlie</item>
+          <item>C</item>
+        </one-of> 
+        <tag>out = "C";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>delta</item>
+          <item>D</item>
+        </one-of> 
+        <tag>out = "D";</tag>
+      </item>
+      <item>
+        <one-of> 
+         <item>echo</item>
+         <item>E</item>
+        </one-of> 
+        <tag>out = "E";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>foxtrot</item>
+          <item>F</item>
+        </one-of> 
+        <tag>out = "F";</tag>
+      </item>
+      <item>
+        <one-of> 
+         <item>golf</item>
+         <item>G</item>
+        </one-of> 
+        <tag>out = "G";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>hotel</item>
+          <item>H</item>
+        </one-of> 
+        <tag>out = "H";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>india</item>
+          <item>I</item>
+        </one-of> 
+        <tag>out = "I";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>juliet</item>
+          <item>J</item>
+        </one-of> 
+        <tag>out = "J";</tag>
+      </item>
+      <item>
+        <one-of> 
+         <item>kilo</item>
+         <item>K</item>
+        </one-of> 
+        <tag>out = "K";</tag>
+      </item>
+      <item>
+        <one-of>
+         <item>lima</item>
+         <item>L</item>
+        </one-of> 
+        <tag>out = "L";</tag>
+      </item>
+      <item>
+        <one-of> 
+         <item>mike</item>
+         <item>M</item>
+        </one-of> 
+        <tag>out = "M";</tag>
+      </item>
+      <item>
+        <one-of>
+          <item>november</item>
+          <item>N</item>
+        </one-of> 
+        <tag>out = "N";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>oscar</item>
+          <item>O</item>
+        </one-of> 
+        <tag>out = "O";</tag>
+      </item>
+      <item>
+        <one-of> 
+         <item>papa</item>
+         <item>P</item>
+        </one-of> 
+        <tag>out = "P";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>quebec</item>
+          <item>Q</item>
+        </one-of> 
+        <tag>out = "Q";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>romeo</item>
+          <item>R</item>
+        </one-of> 
+        <tag>out = "R";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>sierra</item>
+          <item>S</item>
+        </one-of> 
+        <tag>out = "S";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>tango</item>
+          <item>T</item>
+        </one-of> 
+        <tag>out = "T";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>uniform</item>
+          <item>U</item>
+        </one-of> 
+        <tag>out = "U";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>victor</item>
+          <item>V</item>
+        </one-of> 
+        <tag>out = "V";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>whiskey</item>
+          <item>W</item>
+        </one-of> 
+        <tag>out = "W";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>x-ray</item>
+          <item>X</item>
+        </one-of> 
+        <tag>out = "X";</tag>
+      </item>
+      <item>
+        <one-of> 
+          <item>yankee</item>
+          <item>Y</item>
+        </one-of> 
+        <tag>out = "Y";</tag>
+      </item>
+      <item>
+        <one-of> 
+         <item>zulu</item>
+         <item>Z</item>
+        </one-of> 
+        <tag>out = "Z";</tag>
+      </item>
     </one-of>
   </rule>
 
   <rule id="special">
     <one-of>
       <item>
-        <item>space</item>
+        <one-of>
+          <item>space</item>
+          <item>blank</item>
+        </one-of>
         <tag>out = "Space";</tag>
       </item>
 
@@ -63,6 +222,7 @@
         <one-of>
           <item>backspace</item>
           <item>back space</item>
+          <item>undo</item>
         </one-of>
         <tag>out = "Backspace";</tag>
       </item>
@@ -74,7 +234,10 @@
           <item>submit</item>
           <item>save</item>
         </one-of>
-        form
+        <one-of>
+          <item>form</item>
+          <item>input</item>
+        </one-of>
         <tag>out = "Submit";</tag>
       </item>
     </one-of>
@@ -82,10 +245,30 @@
 
   <!-- Toggle letter casing -->
   <rule id="capsLock">
-    capslock
     <one-of>
-      <item>on <tag>out = true;</tag> </item>
-      <item>off <tag>out = false;</tag> </item>
+      <item>
+        capslock
+        <one-of>
+          <item>on <tag>out = true;</tag> </item>
+          <item>off <tag>out = false;</tag> </item>
+        </one-of>
+      </item>
+
+      <item>
+        <one-of>
+          <item>uppercase</item>
+          <item>upper case</item>
+        </one-of>
+        <tag>out = true;</tag>
+      </item>
+      
+      <item>
+        <one-of>
+          <item>lowercase</item>
+          <item>lower case</item>
+        </one-of>
+        <tag>out = false;</tag>
+      </item>
     </one-of>
   </rule>
 </grammar>

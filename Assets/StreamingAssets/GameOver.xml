@@ -32,18 +32,31 @@
       <item>
         <ruleref uri="MainMenu.xml#playGame" />
       </item>
-      <item>play again</item>
-      <item>try again</item>
+      <item>
+        <one-of>
+          <item>play</item>
+          <item>start</item>
+          <item>try</item>
+        </one-of>
+        again
+      </item>
+      <item>replay</item>
     </one-of>
     <tag>out.option = "play-game";</tag>
   </rule>
 
   <!-- Quit to the main menu -->
   <rule id="quit">
-    go
     <one-of>
-      <item>home</item>
-      <item>to main menu</item>
+      <item>quit game</item>
+      <item>
+        go
+        <one-of>
+          <item>home</item>
+          <item>to main menu</item>
+        </one-of>
+      </item>
+      <item>main menu</item>
     </one-of>
     <tag>out.option = "quit-game";</tag>
   </rule>

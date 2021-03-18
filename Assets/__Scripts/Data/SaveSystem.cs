@@ -15,7 +15,6 @@ namespace Data
         /// <summary>
         /// Saves the given PlayerData object to the leaderboard.json file.
         /// </summary>
-        /// <param name="player"></param>
         public static void SaveToLeaderBoard(PlayerData player)
         {
             // Read the current LeaderBoard
