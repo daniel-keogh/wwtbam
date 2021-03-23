@@ -76,7 +76,7 @@
   <!-- Answer selection & confirmation -->
   <rule id="selectAnswer">
     <example>choose B</example>
-    <example>answer C</example>
+    <example>answer sea</example>
 
     <one-of>
       <item>choose</item>
@@ -84,19 +84,31 @@
     </one-of>
     <one-of>
       <item>
-        A
+        <one-of>
+          <item>A</item>
+          <item>ayy</item>
+        </one-of>
         <tag>out.selected = "A";</tag>
       </item>
       <item>
-        B
+        <one-of>
+          <item>B</item>
+          <item>bee</item>
+        </one-of>
         <tag>out.selected = "B";</tag>
       </item>
       <item>
-        C
+        <one-of>
+          <item>C</item>
+          <item>sea</item>
+        </one-of>
         <tag>out.selected = "C";</tag>
       </item>
       <item>
-        D
+        <one-of>
+          <item>D</item>
+          <item>dee</item>
+        </one-of>
         <tag>out.selected = "D";</tag>
       </item>
     </one-of>

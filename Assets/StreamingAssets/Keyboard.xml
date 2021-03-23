@@ -26,6 +26,7 @@
         <one-of> 
           <item>alpha</item>
           <item>A</item>
+          <item>ayy</item>
         </one-of>
         <tag>out = "A";</tag>
       </item>
@@ -33,6 +34,7 @@
         <one-of> 
           <item>bravo</item>
           <item>B</item>
+          <item>bee</item>
         </one-of> 
         <tag>out = "B";</tag>
       </item>
@@ -40,6 +42,7 @@
         <one-of> 
           <item>charlie</item>
           <item>C</item>
+          <item>sea</item>
         </one-of> 
         <tag>out = "C";</tag>
       </item>
@@ -47,6 +50,7 @@
         <one-of> 
           <item>delta</item>
           <item>D</item>
+          <item>dee</item>
         </one-of> 
         <tag>out = "D";</tag>
       </item>
@@ -68,6 +72,7 @@
         <one-of> 
          <item>golf</item>
          <item>G</item>
+         <item>gee</item>
         </one-of> 
         <tag>out = "G";</tag>
       </item>
@@ -82,6 +87,7 @@
         <one-of> 
           <item>india</item>
           <item>I</item>
+          <item>eye</item>
         </one-of> 
         <tag>out = "I";</tag>
       </item>
@@ -89,6 +95,7 @@
         <one-of> 
           <item>juliet</item>
           <item>J</item>
+          <item>jay</item>
         </one-of> 
         <tag>out = "J";</tag>
       </item>
@@ -96,6 +103,7 @@
         <one-of> 
          <item>kilo</item>
          <item>K</item>
+         <item>kay</item>
         </one-of> 
         <tag>out = "K";</tag>
       </item>
@@ -110,6 +118,7 @@
         <one-of> 
          <item>mike</item>
          <item>M</item>
+         <item>em</item>
         </one-of> 
         <tag>out = "M";</tag>
       </item>
@@ -124,6 +133,7 @@
         <one-of> 
           <item>oscar</item>
           <item>O</item>
+          <item>oh</item>
         </one-of> 
         <tag>out = "O";</tag>
       </item>
@@ -131,6 +141,7 @@
         <one-of> 
          <item>papa</item>
          <item>P</item>
+         <item>pee</item>
         </one-of> 
         <tag>out = "P";</tag>
       </item>
@@ -138,6 +149,7 @@
         <one-of> 
           <item>quebec</item>
           <item>Q</item>
+          <item>queue</item>
         </one-of> 
         <tag>out = "Q";</tag>
       </item>
@@ -159,6 +171,7 @@
         <one-of> 
           <item>tango</item>
           <item>T</item>
+          <item>tee</item>
         </one-of> 
         <tag>out = "T";</tag>
       </item>
@@ -166,6 +179,7 @@
         <one-of> 
           <item>uniform</item>
           <item>U</item>
+          <item>you</item>
         </one-of> 
         <tag>out = "U";</tag>
       </item>
@@ -180,6 +194,7 @@
         <one-of> 
           <item>whiskey</item>
           <item>W</item>
+          <item>double you</item>
         </one-of> 
         <tag>out = "W";</tag>
       </item>
@@ -187,6 +202,7 @@
         <one-of> 
           <item>x-ray</item>
           <item>X</item>
+          <item>ex</item>
         </one-of> 
         <tag>out = "X";</tag>
       </item>
@@ -194,6 +210,7 @@
         <one-of> 
           <item>yankee</item>
           <item>Y</item>
+          <item>why</item>
         </one-of> 
         <tag>out = "Y";</tag>
       </item>
