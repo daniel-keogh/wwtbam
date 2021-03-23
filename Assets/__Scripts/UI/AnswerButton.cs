@@ -31,6 +31,9 @@ public class AnswerButton : MonoBehaviour
     private SoundController sc;
     private List<AnswerButton> answerButtons;
 
+    public Answer AnswerValue => answerValue;
+    public bool IsDisabled => isDisabled;
+
     void Start()
     {
         gc = FindObjectOfType<GameController>();

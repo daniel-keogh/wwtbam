@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using OpenTDB;
@@ -121,7 +122,19 @@ public class LifelinesUI : MonoBehaviour
         }
         else
         {
-            return Enum.RandomValue<Answer>().ToString();
+            // Get a random (and not disabled) answer
+            var buttons = FindObjectsOfType<AnswerButton>();
+
+            do
+            {
+                Answer value = Enum.RandomValue<Answer>();
+                AnswerButton button = buttons.First(b => b.AnswerValue == value);
+
+                if (!button.IsDisabled)
+                {
+                    return value.ToString();
+                }
+            } while (true);
         }
     }
 
