@@ -18,6 +18,9 @@
 
   <!-- Show the tutorial screen -->
   <rule id="show">
+    <example>what can i say</example>
+    <example>show the tutorial</example>
+    
     <one-of>
       <item>what can i say</item>
       <item>what should i say</item>
@@ -33,6 +36,8 @@
 
   <!-- Hide the tutorial screen -->
   <rule id="hide">
+    <example>hide the tutorial</example>
+    
     <ruleref uri="Common.xml#hideCommands" />
     <ruleref uri="#tutorialName" />
     <tag>out.tutorial = "tutorial-hide";</tag>

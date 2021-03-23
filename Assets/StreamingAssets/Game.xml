@@ -36,7 +36,11 @@
 
   <!-- Lifelines -->
   <rule id="lifeline">
-    use lifeline
+    <example>use the ask the audience lifeline</example>
+    <example>use fifty fifty lifeline</example>
+
+    <item>use</item>
+    <item repeat="0-1">the</item>
     <one-of>
       <item>
         <ruleref uri="#askAudience" />
@@ -51,6 +55,7 @@
         <tag>out = rules.phoneFriend;</tag>
       </item>
     </one-of>
+    <item>lifeline</item>
   </rule>
 
   <rule id="askAudience">
@@ -70,7 +75,13 @@
 
   <!-- Answer selection & confirmation -->
   <rule id="selectAnswer">
-    choose
+    <example>choose B</example>
+    <example>answer C</example>
+
+    <one-of>
+      <item>choose</item>
+      <item>answer</item>
+    </one-of>
     <one-of>
       <item>
         A

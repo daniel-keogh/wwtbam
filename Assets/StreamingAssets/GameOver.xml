@@ -28,6 +28,9 @@
 
   <!-- Play the game again -->
   <rule id="playAgain">
+    <example>play again</example>
+    <example>start again</example>
+
     <one-of>
       <item>
         <ruleref uri="MainMenu.xml#playGame" />
@@ -47,6 +50,9 @@
 
   <!-- Quit to the main menu -->
   <rule id="quit">
+    <example>go to main menu</example>
+    <example>quit game</example>
+
     <one-of>
       <item>quit game</item>
       <item>

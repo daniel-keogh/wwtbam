@@ -28,6 +28,9 @@
 
   <!-- Start a new game -->
   <rule id="playGame" scope="public">
+    <example>play the game</example>
+    <example>start new game</example>
+
     <one-of>
       <item>
         <one-of>
@@ -47,6 +50,10 @@
 
   <!-- Show/Dismiss the leaderboard screen -->
   <rule id="showLeaderboard">
+    <example>show the leaderboard</example>
+    <example>hide the leaderboard</example>
+    <example>go back</example>
+
     <one-of>
       <item>
         <ruleref uri="Common.xml#showCommands" />
@@ -79,6 +86,8 @@
 
   <!-- Quit the application -->
   <rule id="quitApplication">
+    <example>quit the application</example>
+    
     <one-of>
       <item>quit</item>
       <item>close</item>
