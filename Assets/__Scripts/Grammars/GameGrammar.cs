@@ -115,6 +115,8 @@ namespace Grammars
 
         private void HandleQuitConfirmation(string valueString)
         {
+            if (!quitConfirmationDialog.activeSelf) return;
+
             bool result;
             if (bool.TryParse(valueString, out result))
             {
