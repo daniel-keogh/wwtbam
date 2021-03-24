@@ -192,8 +192,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612085393181146289}
   m_HandleRect: {fileID: 612085393181146290}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.30437303
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -270,21 +270,22 @@ MonoBehaviour:
     an Answer</b></color>\r\n\r\nTo select your answer to a question you should say
     the word \"Choose\", followed by the letter of your chosen answer (A, B, C, or
     D). \n\nYou should then say \"Final Answer\" to confirm your choice.\r\n\r\n<color=#3EA9F1><b>Using
-    Lifelines</b></color>\r\n\r\nTo use a lifeline say \"Use lifeline\", followed
-    by the name of the lifeline. They are as follows:\r\n\r\n- Phone a friend.\r\n-
-    Ask the audience.\r\n- 50/50\r\n\r\n<color=#3EA9F1><b>Quitting the Game</b></color>\r\n\r\nIf
-    you don't know an answer, you can choose to take the money by saying \"take the
-    money\" or \"walk away\". You can then say \"Yes\" or \"No\" to confirm your
-    decision. \r\n\r\n<color=#3EA9F1><b>Main Menu</b></color>\r\n\nAt the main menu
-    you can play a new game by saying \"Play game\" or some variation thereof. \n\nYou
-    can also view the leaderboard by saying \"Show leaderboard\" and \"Hide leaderboard\"
-    to hide it again. \n\nLastly, you can close the application by saying \"Close
-    application\".\n\n<color=#3EA9F1><b>Game Over</b></color>\r\n\nTo save your score
-    to the leaderboard, you can enter your name by speaking each letter individually.
-    You can also make use of the below commands:\n\n- \"CapsLock On\" to enable CapsLock.\n-
-    \"CapsLock Off\" to disable CapsLock.\n- \"Space\" to insert a space.\n- \"Backspace\"
-    to insert a backspace.\n- And \"Submit form\" to save your name.\n\nTo replay
-    the game you can say \"Play again\", or \"Go to main menu\" if you'd prefer.\n"
+    Lifelines</b></color>\r\n\r\nTo use a lifeline say \"Use\", followed by the name
+    of the lifeline. They are as follows:\r\n\r\n- Phone a friend lifeline.\r\n-
+    Ask the audience lifeline.\n- 50/50 lifeline.\n\r\n<color=#3EA9F1><b>Quitting
+    the Game</b></color>\r\n\r\nIf you don't know an answer, you can choose to take
+    the money by saying \"take the money\" or \"walk away\". You can then say \"Yes\"
+    or \"No\" to confirm your decision. \r\n\r\n<color=#3EA9F1><b>Main Menu</b></color>\r\n\nAt
+    the main menu you can play a new game by saying \"Play game\" or some variation
+    thereof. \n\nYou can also view the leaderboard by saying \"Show leaderboard\"
+    and \"Hide leaderboard\" to hide it again. \n\nLastly, you can close the application
+    by saying \"Close application\".\n\n<color=#3EA9F1><b>Game Over</b></color>\r\n\nTo
+    save your score to the leaderboard, you can enter your name by speaking each
+    letter individually. You can also make use of the below commands:\n\n- \"CapsLock
+    On\" to enable CapsLock.\n- \"CapsLock Off\" to disable CapsLock.\n- \"Space\"
+    to insert a space.\n- \"Backspace\" to insert a backspace.\n- And \"Submit form\"
+    to save your name.\n\nTo replay the game you can say \"Play again\", or \"Go
+    to main menu\" if you'd prefer.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -311,8 +312,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
