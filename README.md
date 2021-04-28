@@ -19,7 +19,6 @@ If you're out of lifelines and don't know the answer, you can take the money and
 ## XML Grammars
 
 ```sh
-tree ./Assets/StreamingAssets -P *.xml
 ./Assets/StreamingAssets
 ├── Common.xml
 ├── Game.xml
@@ -42,7 +41,6 @@ tree ./Assets/StreamingAssets -P *.xml
 ## C# Implementation
 
 ```sh
-tree ./Assets/__Scripts/Grammars -P *.cs
 ./Assets/__Scripts/Grammars
 ├── Common
 │   ├── Helpers.cs
